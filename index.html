@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Autocomplete - Niche Recruiting Reviews - Niche</title>		
+	</head>
+
+	<body>
+		<p>The web service response for "pitt" is:</p>
+		<div id="response"/>				
+		
+		<script type="text/javascript" src="JSONPUtil.js"></script>
+		<script type="text/javascript">		
+			function LoadExampleSearch() {
+				/*	To consume the web service, simply call JSONPUtil.LoadJSONP (which can be found in JSONPUtil.js).
+					Its first parameter is the URL to which the request should be made. The second parameter is a
+					callback function that you should define, which takes one argument (the JSON response).
+									
+					The response will always be 200 OK (unless a server error occurs during your search), returning an object 
+					consisting of a field called "results", containing an array of 0 up to 20 objects representing matching colleges, 
+					as well as a field called "total" which indicates the total number of matching results.					
+				*/
+				var exampleSearchUrl = 'http://niche-recruiting-autocomplete.appspot.com/search/?query=pitt';
+				
+				JSONPUtil.LoadJSONP(exampleSearchUrl, function (response) {
+					document.getElementById("response").innerHTML = JSON.stringify(response);
+				});
+			}
+			
+			window.onLoad = LoadExampleSearch();
+		</script>		
+	</body>
+
+</html>
