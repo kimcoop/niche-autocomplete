@@ -22,7 +22,7 @@
 
     if (data.total === 1) {
       // If only one result, activate it
-      $('.list-results li').first().addClass('active');
+      $('.list-results li').first().addClass('result-active');
     }
   });
 
@@ -31,10 +31,10 @@
   });
   
   $.subscribe('search:navigateResult', function(event, data) {
-    $('.list-results .active').removeClass('active'); // for good measure
+    $('.list-results .result-active').removeClass('result-active'); // for good measure
 
     var index = data.index || 0; // default to first item
-    $('.list-results li').eq(index).addClass('active');
+    $('.list-results li').eq(index).addClass('result-active');
   });
 
   $.subscribe('search:selectResult', function(event, data) {

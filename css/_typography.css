@@ -1,0 +1,18 @@
+/**
+ * _typography.css
+ */
+
+body {
+  font: 400 16px/1.36em 'Lato', Arial, sans-serif;
+}
+
+h1 {
+  color: #ccc;
+  display: block;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+

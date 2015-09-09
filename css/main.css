@@ -2,9 +2,10 @@
  * main.css
  */
 
-/* Resets & base layout */
+/* Resets & base components */
 @import "_reset.css";
 @import "_base.css";
+@import "_typography.css";
 
 /* Widgets */
 @import "_autocomplete.css";

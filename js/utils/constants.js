@@ -12,7 +12,8 @@
     keyCodes: {
       ENTER: 13,
       UP: 38,
-      DOWN: 40
+      DOWN: 40,
+      ESCAPE: 27
     },
 
     getSearchUrlForTerm: function(term) {

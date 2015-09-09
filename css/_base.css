@@ -17,9 +17,10 @@ a {
 }
 
 .container {
-  width: 500px;
   margin: 0 auto;
   max-width: 95%;
+  padding: 125px 0 0;
+  width: 500px;
 }
 
 small {

@@ -4,30 +4,37 @@
 		<title>Autocomplete - Niche Recruiting Reviews - Niche</title>		
 		<link rel="stylesheet" href="css/main.css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
+		<header>
+			<!-- <h1>Niche Autocomplete Challenge</h1> -->
+		</header>
 
-		<section class="section section-v1">
+		<div class="container container-themes">
+			<ul class="list list-themes">
+				<li class="theme-active" data-theme="0">
+					<a>Theme 0</a>
+				</li>
+				<li data-theme="1">
+					<a>Theme 1</a>
+				</li>
+			</ul>
+		</div><!-- .container -->
 
-			<div class="container">
-				<div class="alert alert-error error-search hidden"></div>
+		<div class="container container-autocomplete theme-0">
+			<div class="alert alert-error error-search hidden"></div>
 
-				<form class="form form-search">
-					<p class="search-tip">
-						<small>You can use the up/down arrow keys to navigate results, or hit enter to select one.</small>
-					</p>
-					<input type="text" class="input input-search" placeholder="Start your search here" />
-					<!-- <i class="fa fa-search"></i> -->
-					<ul class="list list-results"></ul>
-				</form>
-
-			</div><!-- .container -->
-			
-		</section><!-- .section-v1 -->
-
-		<section class="section section-v2">
-		</section><!-- .section-v2 -->
+			<form class="form form-search">
+				<p class="search-tip">
+					<small>You can use the up/down arrow keys to navigate results, or hit enter to select one.</small>
+				</p>
+				<input type="text" class="input input-search" placeholder="Start your search here" />
+				<!-- <i class="fa fa-search"></i> -->
+				<ul class="list list-results"></ul>
+			</form>
+		</div><!-- .container -->
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="js/utils/JSONPUtil.js"></script>
@@ -36,6 +43,7 @@
 		<script type="text/javascript" src="js/libs/tinyPubSub.js"></script>
 		<script type="text/javascript" src="js/searchWidget.js"></script>
 		<script type="text/javascript" src="js/searchActions.js"></script>
+		<script type="text/javascript" src="js/themeActions.js"></script>
 		<script type="text/javascript" src="js/searchResultsUIUpdater.js"></script>
 		<script type="text/javascript" src="js/searchInputUIUpdater.js"></script>
 
@@ -43,7 +51,9 @@
 		    <li data-result-id="<%= id %>" data-name="<%= name %>">
 		    	<a href="<%= url %>">
 		    		<span class="result-name"><%= name %></span>
-		    		<small class="result-location"><%= location %></small>
+		    		<% if (location !== 'null') { %>
+			    		<small class="result-location"><%= location %></small>
+		    		<% } %>
 		    	</a>
 	    	</li>
 		</script>
