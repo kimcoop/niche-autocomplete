@@ -28,14 +28,6 @@ small {
   font-size: 0.8em;
 }
 
-.search-tip {
-  font-style: italic;
-  float: right;
-  margin-bottom: 5px;
-  text-align: right;
-  width: 50%;
-}
-
 .search-tip::after {
   content: '';
   clear: both;

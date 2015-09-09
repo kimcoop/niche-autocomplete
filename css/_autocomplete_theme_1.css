@@ -1,0 +1,120 @@
+/**
+ * _autocomplete_theme_1.css
+ *
+ * light tan D9CEB2
+ * dark tan 948C75
+ * faint green D5DED9
+ * brown 7A6A53
+ * light teal 99B2B7
+ * 
+ * from palette: http://www.colourlovers.com/palette/77121/Good_Friends
+ */
+
+.theme-1 {
+  font-family: 'Droid Serif', Georgia, Times, serif;
+}
+
+.theme-1 small {
+  color: #D5DED9;
+}
+
+.theme-1 .input-search-container {
+  background: #99B2B7;
+  display: inline-block;
+  padding: 1em 1em 0;
+  width: 100%;
+}
+
+.theme-1 .input-search {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #6D7F83;
+  color: white;
+  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-size: 1em;
+  line-height: 1.2em;
+  padding: 0 0 0.25em;
+  outline: none;
+}
+
+.theme-1 ::-webkit-input-placeholder {
+  color: #6D7F83;
+}
+
+.theme-1 .list-results {
+  background: #948C75;
+  border: 1em solid #99B2B7;
+  border-top: 0;
+  color: white;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+
+.theme-1 .list-results li {
+  border-bottom: none;
+}
+
+.theme-1 .list-results a {
+  border-bottom: thin dashed #99B2B7;
+  display: block;
+  padding: 1em 0;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.theme-1 .list-results li:last-of-type a {
+  border-bottom: 0;
+}
+
+.theme-1 .result-name,
+.theme-1 .result-location {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.theme-1 .result-name {
+  font-family: 'Droid Sans', Georgia, Times, serif;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: none;
+  -webkit-transition: none;
+  width: 75%;
+}
+
+.theme-1 .result-location {
+  margin-left: 0;
+  text-align: right;
+  width: 24%;
+}
+
+.theme-1 .list-results a:hover,
+.theme-1 .list-results a:focus,
+.theme-1 .list-results .result-active {
+  background: inherit;
+  color: #D9CEB2;
+}
+
+.theme-1 .list-results a:hover .result-name::after,
+.theme-1 .list-results a:focus .result-name::after,
+.theme-1 .result-active .result-name::after {
+  content: ' \00BB';
+}
+
+.theme-1 .list-results a:hover .result-name,
+.theme-1 .list-results a:focus .result-name,
+.theme-1 .result-active .result-name {
+  font-weight: normal;
+  padding: 0;
+}
+
+.theme-1 .form-search {
+  position: relative;
+}
+
+.theme-1 .search-tip {
+  display: none;
+}
