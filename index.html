@@ -9,7 +9,7 @@
 
 	<body>
 		<header>
-			<!-- <h1>Niche Autocomplete Challenge</h1> -->
+			<h1>Niche Autocomplete Challenge</h1>
 		</header>
 
 		<div class="container container-themes">
@@ -21,21 +21,28 @@
 					<a>Theme 1</a>
 				</li>
 			</ul>
-		</div><!-- .container -->
+			<p>
+				Switching themes triggers a swap of the theme class on the autocomplete's outermost container.
+			</p>
+		</div><!-- .container-themes -->
 
 		<div class="container container-autocomplete theme-0">
 			<div class="alert alert-error error-search hidden"></div>
 
 			<form class="form form-search">
-				<p class="search-tip">
-					<small>You can use the up/down arrow keys to navigate results, or hit enter to select one.</small>
-				</p>
 				<div class="input-search-container">
 					<input type="text" class="input input-search" placeholder="Start your search here" />
 				</div>
 				<ul class="list list-results"></ul>
 			</form>
-		</div><!-- .container -->
+		</div><!-- .container-autocomplete -->
+
+		<div class="container container-article-sample">
+			<article class="article article-sample">
+				<p>Bacon ipsum dolor amet t-bone frankfurter swine beef, shankle short ribs pork belly turkey picanha. Doner spare ribs meatball turducken cow cupim. Pork belly pork chop pancetta, fatback ham hock.</p>
+				<p>Turducken tail brisket ribeye ground round. Frankfurter venison cow leberkas landjaeger ham hock alcatra ham. Tri-tip pork chop drumstick kielbasa, prosciutto jowl bresaola shoulder biltong flank tail landjaeger ground round ham hock chucks.</p>
+			</article>
+		</div>
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="js/utils/JSONPUtil.js"></script>

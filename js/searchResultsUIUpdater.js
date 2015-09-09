@@ -6,6 +6,7 @@
   'use strict';
 
   $.subscribe('search:jsonLoadError', function(event, data) {
+    debugger;
     // TODO
     //  $('.error-search') 
   });
@@ -14,15 +15,13 @@
     var markup = '';
 
     $.each(data.results, function(i, result) {
-      /* TODO: highlight matching indices */
       markup += tmpl('tmpl_searchResult', result);
     });
 
     $('.list-results').html(markup);
 
     if (data.total === 1) {
-      // If only one result, activate it
-      $('.list-results li').first().addClass('result-active');
+      $('.list-results li').first().addClass('result-active'); // If only one result, activate it
     }
   });
 
@@ -31,14 +30,14 @@
   });
   
   $.subscribe('search:navigateResult', function(event, data) {
-    $('.list-results .result-active').removeClass('result-active'); // for good measure
+    $('.list-results .result-active').removeClass('result-active'); // For good measure
 
-    var index = data.index || 0; // default to first item
+    var index = data.index || 0;
     $('.list-results li').eq(index).addClass('result-active');
   });
 
   $.subscribe('search:selectResult', function(event, data) {
-    var index = data.index || 0; // default to first item
+    var index = data.index || 0;
     $('.list-results li').eq(index)
       .addClass('selected')
       .children('a')[0].click();

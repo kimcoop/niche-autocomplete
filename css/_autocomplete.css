@@ -53,10 +53,13 @@
   position: relative;
 }
 
-.search-tip {
-  font-style: italic;
-  float: right;
-  margin-bottom: 5px;
-  text-align: right;
-  width: 50%;
+.article-sample {
+  color: #ccc;
+  font-size: 2em;
+  font-family: times;
+  line-height: 1.2em;
+  margin-top: 25px;
+  filter: blur(5px);
+  text-align: justify;
+  -webkit-filter: blur(5px);
 }
