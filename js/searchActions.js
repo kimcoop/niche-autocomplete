@@ -7,19 +7,26 @@
 
     $(function() {
 
+      $('.input-search').val(''); // Always clear on start
+
       $('.form-search').submit(function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Enter keypress should not submit form
+      });
+      
+      $('.form-search').on('blur', function() {
+        // TODO
+        $.publish('search:exitResults');
       });
 
       var Search = new SearchWidget();
 
       $('.input-search').on('keyup', function(e) {
-        // TODO: prevent text input cursor from wandering
+
+        // TODO: repvent wandering cursor
 
         if (e.keyCode === Constants.keyCodes.ENTER && $('.list-results .active').length) {
-          // TODO: what time of js comment is best inline?
           $.publish('search:selectResult', { index: $('.list-results .active').index() });
-          return;
+          return false;
         }
 
         if (e.keyCode === Constants.keyCodes.DOWN) {
@@ -28,7 +35,7 @@
           } else {  // Wrap or active first item, same effect
             $.publish('search:navigateResult', { index: 0 });
           }
-          return;
+          return false;
         }
 
         if (e.keyCode === Constants.keyCodes.UP) {
@@ -37,10 +44,11 @@
           } else { // Wrap or active last item, same effect
             $.publish('search:navigateResult', { index: -1 });
           }
-          return;
+          return false;
         }
         
         Search.fetch( $(this).val().trim() );
+        return false;
       });
 
     });

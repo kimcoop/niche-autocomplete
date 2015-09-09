@@ -18,7 +18,7 @@ a {
 
 .container {
   width: 500px;
-  margin: 50px auto;
+  margin: 0 auto;
   max-width: 95%;
 }
 
@@ -32,8 +32,6 @@ small {
   float: right;
   margin-bottom: 5px;
   text-align: right;
-  transition: all 1s ease;
-  -webkit-transition: all 0.5s ease;
   width: 50%;
 }
 
@@ -67,50 +65,4 @@ input[type="text"] {
   line-height: 1.5;
   outline: none;
   padding: 6px 15px;
-}
-
-.input-search {
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-.list-results {
-    border: thin solid #ccc;
-    border-top: none;
-    border-bottom: none;
-    left: 4%;
-    position: relative;
-    top: -10px;
-    width: 92%;
-}
-
-.list-results li {
-  border-bottom: thin solid #ccc;
-}
-
-.list-results a {
-  display: block;
-  padding: 15px;
-}
-
-.result-name {
-  transition: all 1s ease;
-  -webkit-transition: all 0.5s ease;
-}
-
-.list-results a:hover,
-.list-results a:focus,
-.list-results li.active {
-  background: #efefef;
-}
-
-.list-results a:hover .result-name,
-.list-results a:focus .result-name,
-.list-results li.active .result-name {
-  font-weight: bold;
-  padding-left: 10px;
-}
-
-.result-location {
-  margin-left: 2px;
 }

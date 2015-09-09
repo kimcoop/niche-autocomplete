@@ -19,6 +19,15 @@
     });
 
     $('.list-results').html(markup);
+
+    if (data.total === 1) {
+      // If only one result, activate it
+      $('.list-results li').first().addClass('active');
+    }
+  });
+
+  $.subscribe('search:exitResults', function(event, data) {
+    $('.list-results').empty();
   });
   
   $.subscribe('search:navigateResult', function(event, data) {

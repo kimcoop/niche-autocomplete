@@ -11,7 +11,7 @@
 
     // If blank search, render no results
     if (!searchTerm.length) {
-      $.publish('search:jsonLoadSuccess', { results: [], total: 0 });
+      $.publish('search:exitResults');
     }
 
     var searchUrl = Constants.getSearchUrlForTerm(searchTerm);
