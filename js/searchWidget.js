@@ -5,51 +5,26 @@
 (function($, Constants) {
   'use strict';
 
-  function SearchWidget($resultDisplay, $errorDisplay) {
-    this.$resultDisplay = $resultDisplay;
-    this.$errorDisplay = $errorDisplay;
-  }
-
-  SearchWidget.prototype.handleError = function(message) {
-    message = message || Constants.SEARCH_ERROR_MSG_DEFAULT;
-
-    this.$errorDisplay.html(message)
-                      .removeClass('hidden');
-  }
+  function SearchWidget() {}
 
   SearchWidget.prototype.fetch = function(searchTerm) {
-    if (!this.$resultDisplay || !this.$errorDisplay.length) {
-      return;
-    }
 
-    /* If blank search, empty results */
+    // If blank search, render no results
     if (!searchTerm.length) {
-      this.$resultDisplay.html('');
+      $.publish('search:jsonLoadSuccess', { results: [], total: 0 });
     }
 
-    /* Hide error display */
-    this.$errorDisplay.addClass('hidden');
-
-    var searchUrl = Constants.getSearchUrlForTerm(searchTerm),
-      $display = this.$resultDisplay;
+    var searchUrl = Constants.getSearchUrlForTerm(searchTerm);
       
     JSONPUtil.LoadJSONP(searchUrl, function(response) {
-      /* If we don't get a response, something went wrong,
-       * so let the user know there's an error */
+      // If we don't get a response, something went wrong,
+      // so just let the user know there's an error
       if (!response) {
-        /* TODO: ensure this works */
-        this.handleError();
+        $.publish('search:jsonLoadError', { message: Constants.SEARCH_ERROR_MSG_DEFAULT });
         return;
       }
 
-      var markup = '';
-
-      $.each(response.results, function(i, result) {
-        markup += tmpl('tmpl_searchResult', result);
-      });
-
-      /* Aggregate markup to minimize DOM manipulations */
-      $display.html(markup);
+      $.publish('search:jsonLoadSuccess', response);
     });
   }
 

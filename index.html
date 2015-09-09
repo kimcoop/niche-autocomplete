@@ -11,7 +11,10 @@
 		<div class="container">
 			<div class="alert alert-error error-search hidden"></div>
 
-			<form>
+			<form class="form form-search">
+				<p class="search-tip hidden">
+					<small>You can use the up/down arrow keys to navigate results, or hit enter to select one.</small>
+				</p>
 				<input type="text" class="input input-search" placeholder="Start your search here" />
 				<!-- <i class="fa fa-search"></i> -->
 			</form>
@@ -22,16 +25,18 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="js/JSONPUtil.js"></script>
 		<script type="text/javascript" src="js/constants.js"></script>
-		<script type="text/javascript" src="js/microtemplate.js"></script>
+		<script type="text/javascript" src="js/libs/microtemplate.js"></script>
+		<script type="text/javascript" src="js/libs/tinyPubSub.js"></script>
 		<script type="text/javascript" src="js/searchWidget.js"></script>
-		<script type="text/javascript" src="js/autoCompleteActions.js"></script>
+		<script type="text/javascript" src="js/searchActions.js"></script>
+		<script type="text/javascript" src="js/searchTipUIUpdater.js"></script>
+		<script type="text/javascript" src="js/searchResultsUIUpdater.js"></script>
 
 		<script type="text/html" id="tmpl_searchResult">
 		    <li data-result-id="<%= id %>">
 		    	<a href="<%= url %>">
-		    	<!-- if location TODO -->
 		    		<span class="result-name"><%= name %></span>
-		    		<span class="result-location"><%= location %></span>
+		    		<small class="result-location"><%= location %></small>
 		    	</a>
 	    	</li>
 		</script>

@@ -1,5 +1,10 @@
-// Simple JavaScript Templating
-// John Resig - http://ejohn.org/ - MIT Licensed
+/**
+ * microtemplate.js
+ * 
+ * Simple JavaScript Templating
+ * John Resig - http://ejohn.org/ - MIT Licensed
+ */
+
 (function(){
   var cache = {};
  

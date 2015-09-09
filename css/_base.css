@@ -19,6 +19,27 @@ a {
 .container {
   width: 500px;
   margin: 50px auto;
+  max-width: 95%;
+}
+
+small {
+  color: #ccc;
+  font-size: 0.8em;
+}
+
+.search-tip {
+  font-style: italic;
+  float: right;
+  margin-bottom: 5px;
+  text-align: right;
+  transition: all 1s ease;
+  -webkit-transition: all 0.5s ease;
+  width: 50%;
+}
+
+.search-tip::after {
+  content: '';
+  clear: both;
 }
 
 .alert {
@@ -56,14 +77,18 @@ input[type="text"] {
 .list-results {
     border: thin solid #ccc;
     border-top: none;
-    left: 15px;
+    border-bottom: none;
+    left: 4%;
     position: relative;
     top: -10px;
-    width: 470px;
+    width: 92%;
+}
+
+.list-results li {
+  border-bottom: thin solid #ccc;
 }
 
 .list-results a {
-  border-bottom: thin solid #ccc;
   display: block;
   padding: 15px;
 }
@@ -73,25 +98,19 @@ input[type="text"] {
   -webkit-transition: all 0.5s ease;
 }
 
-.list-results li:last-child a {
-  border-bottom: none;
-}
-
 .list-results a:hover,
 .list-results a:focus,
-.list-results a.active {
+.list-results li.active {
   background: #efefef;
 }
 
 .list-results a:hover .result-name,
 .list-results a:focus .result-name,
-.list-results a.active .result-name {
+.list-results li.active .result-name {
   font-weight: bold;
   padding-left: 10px;
 }
 
 .result-location {
-  color: #ccc;
-  font-size: 0.8em;
   margin-left: 2px;
 }
