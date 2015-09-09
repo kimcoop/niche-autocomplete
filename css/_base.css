@@ -1,0 +1,12 @@
+/**
+ * _base.css
+ */
+
+ body {
+  background: #2384de;
+ }
+
+ .container {
+  width: 500px;
+  margin: 50px auto;
+ }
