@@ -1,4 +1,9 @@
-// Borrowed gratefully from Shoefitr.com
+/**
+ * JSONPUtil.js
+ *
+ * Borrowed gratefully from Shoefitr.com
+ */
+
 var JSONPUtil = {
 
     _oJsonpRequests: {},

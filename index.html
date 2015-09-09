@@ -3,29 +3,35 @@
 	<head>
 		<title>Autocomplete - Niche Recruiting Reviews - Niche</title>		
 		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	</head>
 
 	<body>
-		<div class="container container-results">
-		</div>
 
 		<div class="container">
+			<div class="alert alert-error error-search hidden"></div>
+
 			<form>
-				<input class="input input-search" placeholder="search term..." />
+				<input type="text" class="input input-search" placeholder="Start your search here" />
+				<!-- <i class="fa fa-search"></i> -->
 			</form>
-		</div>
+
+			<ul class="list list-results"></ul>
+		</div><!-- .container -->
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="js/JSONPUtil.js"></script>
 		<script type="text/javascript" src="js/constants.js"></script>
 		<script type="text/javascript" src="js/microtemplate.js"></script>
 		<script type="text/javascript" src="js/searchWidget.js"></script>
-		<script type="text/javascript" src="js/autoCompleteUtils.js"></script>
+		<script type="text/javascript" src="js/autoCompleteActions.js"></script>
 
 		<script type="text/html" id="tmpl_searchResult">
-		    <li>
+		    <li data-result-id="<%= id %>">
 		    	<a href="<%= url %>">
-		    		<%= name %>
+		    	<!-- if location TODO -->
+		    		<span class="result-name"><%= name %></span>
+		    		<span class="result-location"><%= location %></span>
 		    	</a>
 	    	</li>
 		</script>

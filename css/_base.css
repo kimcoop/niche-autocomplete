@@ -2,11 +2,96 @@
  * _base.css
  */
 
- body {
-  background: #2384de;
- }
+* {
+  box-sizing: border-box;
+}
 
- .container {
+body {
+  font-family: arial;
+  color: #555;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
   width: 500px;
   margin: 50px auto;
- }
+}
+
+.alert {
+  border-radius: 2px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.alert-error {
+  border: thin solid red;
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="text"] {
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+  padding: 6px 15px;
+}
+
+.input-search {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.list-results {
+    border: thin solid #ccc;
+    border-top: none;
+    left: 15px;
+    position: relative;
+    top: -10px;
+    width: 470px;
+}
+
+.list-results a {
+  border-bottom: thin solid #ccc;
+  display: block;
+  padding: 15px;
+}
+
+.result-name {
+  transition: all 1s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.list-results li:last-child a {
+  border-bottom: none;
+}
+
+.list-results a:hover,
+.list-results a:focus,
+.list-results a.active {
+  background: #efefef;
+}
+
+.list-results a:hover .result-name,
+.list-results a:focus .result-name,
+.list-results a.active .result-name {
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.result-location {
+  color: #ccc;
+  font-size: 0.8em;
+  margin-left: 2px;
+}
