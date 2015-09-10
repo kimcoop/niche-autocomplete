@@ -1,5 +1,5 @@
 /**
- * _base.css
+ * _base.scss
  */
 
 * {
@@ -32,9 +32,15 @@ header {
   width: 700px;
 }
 
-small {
+.article-sample {
   color: #ccc;
-  font-size: 0.8em;
+  font-size: 2em;
+  font-family: times;
+  line-height: 1.2em;
+  margin-top: 25px;
+  filter: blur(5px);
+  text-align: justify;
+  -webkit-filter: blur(5px);
 }
 
 .hidden {

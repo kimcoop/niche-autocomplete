@@ -1,0 +1,123 @@
+/**
+ * _autocomplete-theme-1.scss
+ *
+ * light tan D9CEB2
+ * dark tan 948C75
+ * faint green D5DED9
+ * brown 7A6A53
+ * light teal 99B2B7
+ * 
+ * from palette: http://www.colourlovers.com/palette/77121/Good_Friends
+ */
+
+.theme-1 {
+  font-family: 'Droid Serif', Georgia, Times, serif;
+
+  small {
+    color: #D5DED9;
+  }
+
+  .input-search-container {
+    background: #99B2B7;
+    display: inline-block;
+    padding: 1em 1em 0;
+    width: 100%;
+  }
+
+  .input-search {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #6D7F83;
+    color: white;
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    font-size: 1em;
+    line-height: 1.2em;
+    padding: 0 0 0.25em;
+    outline: none;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #6D7F83;
+  }
+
+  .list-results {
+    background: #948C75;
+    border: 1em solid #99B2B7;
+    border-top: 0;
+    color: white;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 5;
+  }
+
+  .list-results:not(:empty) {
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+  }
+
+  .list-results {
+    li {
+      border-bottom: none;
+      &:last-of-type a {
+        border-bottom: 0;
+      }
+    }
+
+    a {
+      border-bottom: thin dashed #99B2B7;
+      display: block;
+      padding: 1em 0;
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+  }
+
+  .result-name,
+  .result-location {
+    display: inline-block;
+    vertical-align: middle;
+
+    @media (max-width: 500px) {
+      display: block;
+      text-align: left;
+      width: 100%;
+    }
+  }
+
+  .result-name {
+    font-family: 'Droid Sans', Georgia, Times, serif;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: none;
+    -webkit-transition: none;
+    width: 70%;
+  }
+
+  .result-location {
+    margin-left: 0;
+    text-align: right;
+    width: 29%;
+  }
+
+  .result-active {
+    background: inherit;
+    color: #D9CEB2;
+
+    i {
+      display: inline-block;
+    }
+
+    .result-name {
+      font-weight: normal;
+      padding: 0;
+    }
+  }
+
+  .form-search {
+    position: relative;
+  }
+}

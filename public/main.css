@@ -1,0 +1,411 @@
+/**
+ * main.scss
+ */
+/* Resets & base components */
+/**
+ * _reset.css
+ * 
+ * Eric Meyers' awesome CSS reset for minimal prototypes, from:
+ * http://meyerweb.com/eric/tools/css/reset/ 
+ * v2.0 | 20110126
+ * License: none (public domain)
+ */
+/* line 10, ../scss/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 31, ../scss/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 35, ../scss/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 38, ../scss/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 41, ../scss/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 44, ../scss/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 49, ../scss/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * _base.scss
+ */
+/* line 5, ../scss/_base.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 9, ../scss/_base.scss */
+body {
+  font-family: arial;
+  color: #555;
+}
+
+/* line 14, ../scss/_base.scss */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* line 19, ../scss/_base.scss */
+header {
+  border-bottom: thin solid #ccc;
+  padding: 0.4em 0;
+}
+
+/* line 24, ../scss/_base.scss */
+.container {
+  margin: 0 auto;
+  max-width: 95%;
+  width: 500px;
+}
+
+/* line 30, ../scss/_base.scss */
+.container-article-sample {
+  padding-bottom: 100px;
+  width: 700px;
+}
+
+/* line 35, ../scss/_base.scss */
+.article-sample {
+  color: #ccc;
+  font-size: 2em;
+  font-family: times;
+  line-height: 1.2em;
+  margin-top: 25px;
+  filter: blur(5px);
+  text-align: justify;
+  -webkit-filter: blur(5px);
+}
+
+/* line 46, ../scss/_base.scss */
+.hidden {
+  display: none;
+}
+
+/* line 50, ../scss/_base.scss */
+input[type="text"] {
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+  padding: 6px 15px;
+}
+
+/**
+ * _typography.scss
+ */
+/* line 5, ../scss/_typography.scss */
+body {
+  font: 400 16px/1.36em 'Lato', Arial, sans-serif;
+}
+
+/* line 9, ../scss/_typography.scss */
+h1 {
+  color: #ccc;
+  display: block;
+  font-size: 0.8em;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* line 19, ../scss/_typography.scss */
+p {
+  margin-bottom: 1.5em;
+}
+
+/* line 23, ../scss/_typography.scss */
+small {
+  color: #ccc;
+  font-size: 0.8em;
+}
+
+/**
+ * _alerts.scss
+ */
+/* line 5, ../scss/_alerts.scss */
+.alert {
+  border-radius: 2px;
+  margin: 1em auto;
+  padding: 0.5em;
+  text-align: center;
+}
+
+/* line 12, ../scss/_alerts.scss */
+.alert-error {
+  border: thin solid #FF9494;
+  color: #FF9494;
+}
+
+/* Widgets */
+/**
+ * _autocomplete.scss
+ */
+/* line 5, ../scss/_autocomplete.scss */
+.input-search {
+  width: 100%;
+}
+
+/* line 9, ../scss/_autocomplete.scss */
+.list-results {
+  background: white;
+  border: thin solid #ccc;
+  border-top: none;
+  border-bottom: none;
+  left: 4%;
+  margin-bottom: 50px;
+  position: absolute;
+  width: 92%;
+  z-index: 5;
+}
+/* line 20, ../scss/_autocomplete.scss */
+.list-results i {
+  display: none;
+}
+/* line 24, ../scss/_autocomplete.scss */
+.list-results li {
+  border-bottom: thin solid #ccc;
+}
+/* line 28, ../scss/_autocomplete.scss */
+.list-results a {
+  display: block;
+  padding: 1em;
+}
+
+/* line 34, ../scss/_autocomplete.scss */
+.result-name {
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+/* line 39, ../scss/_autocomplete.scss */
+.result-location {
+  margin-left: 2px;
+}
+
+/* line 43, ../scss/_autocomplete.scss */
+.result-active {
+  background: #efefef;
+}
+/* line 46, ../scss/_autocomplete.scss */
+.result-active .result-name {
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+/* line 52, ../scss/_autocomplete.scss */
+.form-search {
+  position: relative;
+}
+
+/**
+ * _autocomplete-theme-1.scss
+ *
+ * light tan D9CEB2
+ * dark tan 948C75
+ * faint green D5DED9
+ * brown 7A6A53
+ * light teal 99B2B7
+ * 
+ * from palette: http://www.colourlovers.com/palette/77121/Good_Friends
+ */
+/* line 13, ../scss/_autocomplete-theme-1.scss */
+.theme-1 {
+  font-family: 'Droid Serif', Georgia, Times, serif;
+}
+/* line 16, ../scss/_autocomplete-theme-1.scss */
+.theme-1 small {
+  color: #D5DED9;
+}
+/* line 20, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .input-search-container {
+  background: #99B2B7;
+  display: inline-block;
+  padding: 1em 1em 0;
+  width: 100%;
+}
+/* line 27, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .input-search {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid #6D7F83;
+  color: white;
+  font-family: 'Droid Serif', Georgia, Times, serif;
+  font-size: 1em;
+  line-height: 1.2em;
+  padding: 0 0 0.25em;
+  outline: none;
+}
+/* line 40, ../scss/_autocomplete-theme-1.scss */
+.theme-1 ::-webkit-input-placeholder {
+  color: #6D7F83;
+}
+/* line 44, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .list-results {
+  background: #948C75;
+  border: 1em solid #99B2B7;
+  border-top: 0;
+  color: white;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 5;
+}
+/* line 55, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .list-results:not(:empty) {
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+/* line 62, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .list-results li {
+  border-bottom: none;
+}
+/* line 64, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .list-results li:last-of-type a {
+  border-bottom: 0;
+}
+/* line 69, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .list-results a {
+  border-bottom: thin dashed #99B2B7;
+  display: block;
+  padding: 1em 0;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+/* line 78, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .result-name,
+.theme-1 .result-location {
+  display: inline-block;
+  vertical-align: middle;
+}
+@media (max-width: 500px) {
+  /* line 78, ../scss/_autocomplete-theme-1.scss */
+  .theme-1 .result-name,
+  .theme-1 .result-location {
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+}
+/* line 90, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .result-name {
+  font-family: 'Droid Sans', Georgia, Times, serif;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: none;
+  -webkit-transition: none;
+  width: 70%;
+}
+/* line 100, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .result-location {
+  margin-left: 0;
+  text-align: right;
+  width: 29%;
+}
+/* line 106, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .result-active {
+  background: inherit;
+  color: #D9CEB2;
+}
+/* line 110, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .result-active i {
+  display: inline-block;
+}
+/* line 114, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .result-active .result-name {
+  font-weight: normal;
+  padding: 0;
+}
+/* line 120, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .form-search {
+  position: relative;
+}
+
+/**
+ * _themes-menu.scss
+ */
+/* line 5, ../scss/_themes-menu.scss */
+.container-themes {
+  text-align: center;
+  padding: 100px 0 0;
+}
+/* line 9, ../scss/_themes-menu.scss */
+.container-themes li {
+  display: inline-block;
+}
+/* line 13, ../scss/_themes-menu.scss */
+.container-themes a {
+  cursor: pointer;
+  display: block;
+  margin: 0 0.5em;
+  padding: 0.8em 0.4em;
+  text-transform: uppercase;
+  transition: all 300ms ease;
+  -webkit-transition: all 300ms ease;
+}
+/* line 22, ../scss/_themes-menu.scss */
+.container-themes a:hover, .container-themes a:focus {
+  border-bottom: 2px solid #ccc;
+  color: #ccc;
+}
+
+/* line 30, ../scss/_themes-menu.scss */
+.list-themes {
+  margin-bottom: 25px;
+}
+
+/* line 35, ../scss/_themes-menu.scss */
+.theme-active a, .theme-active a:hover, .theme-active a:focus {
+  border-bottom: 3px solid #99B2B7;
+  color: #555;
+  font-weight: bold;
+}

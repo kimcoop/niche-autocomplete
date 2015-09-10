@@ -26,6 +26,6 @@ define(['constants', 'jquery'], function(Constants) {
         $.publish('search:jsonLoadSuccess', response);
       });
     }
-  }
+  };
 
 });

@@ -1,5 +1,5 @@
 /**
- * _typography.css
+ * _typography.scss
  */
 
 body {
@@ -18,4 +18,9 @@ h1 {
 
 p {
   margin-bottom: 1.5em;
+}
+
+small {
+  color: #ccc;
+  font-size: 0.8em;
 }

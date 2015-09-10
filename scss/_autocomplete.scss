@@ -1,0 +1,54 @@
+/**
+ * _autocomplete.scss
+ */
+
+.input-search {
+  width: 100%;
+}
+
+.list-results {
+  background: white;
+  border: thin solid #ccc;
+  border-top: none;
+  border-bottom: none;
+  left: 4%;
+  margin-bottom: 50px;
+  position: absolute;
+  width: 92%;
+  z-index: 5;
+
+  i {
+    display: none;
+  }
+
+  li {
+    border-bottom: thin solid #ccc;
+  }
+
+  a {
+    display: block;
+    padding: 1em;
+  }
+}
+
+.result-name {
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.result-location {
+  margin-left: 2px;
+}
+
+.result-active {
+  background: #efefef;
+
+  .result-name {
+    font-weight: bold;
+    padding-left: 5px;
+  }
+}
+
+.form-search {
+  position: relative;
+}
