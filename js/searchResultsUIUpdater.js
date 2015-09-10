@@ -2,7 +2,7 @@
  * searchResultsUIUpdater.js
  */
 
-require(['jquery', 'microtemplate'], function() {
+require(['jquery', 'microtemplate', 'tinyPubSub'], function() {
   'use strict';
 
   $.subscribe('theme:activate', function(event, data) {
@@ -37,6 +37,10 @@ require(['jquery', 'microtemplate'], function() {
   $.subscribe('search:exitResults', function(event, data) {
     $('.list-results').empty();
   });
+
+  $.subscribe('search:exitResult', function(event, data) {
+    $('.list-results .result-active').removeClass('result-active');
+  });
   
   $.subscribe('search:navigateResult', function(event, data) {
     $('.list-results .result-active').removeClass('result-active'); // For good measure
@@ -48,7 +52,7 @@ require(['jquery', 'microtemplate'], function() {
   $.subscribe('search:selectResult', function(event, data) {
     var index = data.index || 0;
     $('.list-results li').eq(index)
-      .addClass('selected')
+      .addClass('selected') // TODO: select effect
       .children('a')[0].click();
   });
 

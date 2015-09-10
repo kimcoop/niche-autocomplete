@@ -1,19 +1,31 @@
+/**
+ * app.js
+ *
+ * Main entry point for requireJS. 
+ * Configure paths for common libs/utils,
+ * to allow shorthand dependency references
+ * (eg 'tinyPubSub' instead of 'libs/tinyPubSub')
+ *
+ * Third party dependencies (jQuery) go in libs/
+ */
 require.config({
   paths: {
     'jquery': 'https://code.jquery.com/jquery-2.1.4.min',
     'microtemplate': 'libs/microtemplate',
     'tinyPubSub': 'libs/tinyPubSub',
-    'constants': 'utils/constants'
+    'constants': 'utils/constants',
+    'jsonp': 'utils/JSONPUtil'
   }
 });
 
-require(['utils/JSONPUtil',
-         'searchActions', 
-         'searchInputUIUpdater',
-         'searchResultsUIUpdater',
-         'searchWidget',
-         'themeActions',
-         'themeMenuUIUpdater',
-        ], function() {
-  console.log('loaded');
-});
+
+// Modules to load go here
+require([
+  'jsonp', 
+  'searchActions', 
+  'searchInputUIUpdater',
+  'searchResultsUIUpdater',
+  'searchService',
+  'themeActions',
+  'themeMenuUIUpdater'
+], function() {});

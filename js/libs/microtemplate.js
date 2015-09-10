@@ -5,7 +5,7 @@
  * John Resig - http://ejohn.org/ - MIT Licensed
  */
 
-define([], function() {
+(function() {
   var cache = {};
  
   this.tmpl = function tmpl(str, data){
@@ -37,4 +37,4 @@ define([], function() {
     // Provide some basic currying to the user
     return data ? fn( data ) : fn;
   };
-});
+})();

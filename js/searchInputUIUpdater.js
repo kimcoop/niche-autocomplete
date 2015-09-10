@@ -22,5 +22,9 @@ define(['tinyPubSub', 'jquery'], function() {
   $.subscribe('search:exitResults', function(event, data) {
     $('.input-search').val('');
   });
+  
+  $.subscribe('search:exitResult', function(event, data) {
+    $('.input-search').val('');
+  });
 
 });

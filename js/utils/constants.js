@@ -2,12 +2,12 @@
  * constants.js
  */
 
-define([], function() {
+define(function() {
  'use strict';
     
   var Constants = {
     URL_SEARCH_BASE: 'http://niche-recruiting-autocomplete.appspot.com/search/?query=',
-    SEARCH_ERROR_MSG_DEFAULT: 'We\'re sorry, but something went wrong with your search',
+    ERROR_SEARCH_DEFAULT: 'We\'re sorry, but something went wrong with your search. Please try again.',
     
     keyCodes: {
       ENTER: 13,

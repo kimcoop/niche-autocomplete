@@ -21,9 +21,6 @@
 					<a>Theme 1</a>
 				</li>
 			</ul>
-			<p>
-				Switching themes triggers a swap of the theme class on the autocomplete's outermost container.
-			</p>
 		</div><!-- .container-themes -->
 
 		<div class="container alert alert-error error-search hidden"></div>
@@ -47,7 +44,7 @@
 		<script src="http://requirejs.org/docs/release/2.1.20/minified/require.js" data-main="js/app"></script>
 
 		<script type="text/html" id="tmpl_searchResult">
-		    <li data-result-id="<%= id %>" data-name="<%= name %>">
+		    <li class="result" data-result-id="<%= id %>" data-name="<%= name %>">
 		    	<a href="<%= url %>">
 		    		<span class="result-name">
 		    			<%= name %>
