@@ -15,7 +15,7 @@
   font-family: 'Droid Serif', Georgia, Times, serif;
 
   small {
-    color: $light-tan;
+    color: $faint-green;
   }
 
   .input-search-container {
@@ -72,18 +72,6 @@
     }
   }
 
-  .result-name,
-  .result-location {
-    display: inline-block;
-    vertical-align: middle;
-
-    @media (max-width: 500px) {
-      display: block;
-      text-align: left;
-      width: 100%;
-    }
-  }
-
   .result-name {
     font-family: 'Droid Sans', Georgia, Times, serif;
     font-size: 0.9em;
@@ -100,8 +88,20 @@
   .result-active {
     color: $light-tan;
 
-    i {
+    .result-name i {
       display: inline-block;
+    }
+  }
+
+  .result-name,
+  .result-location {
+    display: inline-block;
+    vertical-align: middle;
+
+    @media (max-width: 500px) {
+      display: block;
+      text-align: left;
+      width: 100%;
     }
   }
 }
