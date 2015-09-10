@@ -5,6 +5,14 @@
 (function($) {
   'use strict';
 
+  $.subscribe('theme:activate', function(event, data) {
+    var themeClass = ('theme-' + data.theme) || 'theme-0';
+
+    $('.container-autocomplete')
+      .removeClass('theme-0 theme-1')
+      .addClass(themeClass);
+  });
+
   $.subscribe('search:jsonLoadError', function(event, data) {
     debugger;
     // TODO
