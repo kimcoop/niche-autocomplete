@@ -44,17 +44,7 @@
 			</article>
 		</div>
 		
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="js/utils/JSONPUtil.js"></script>
-		<script type="text/javascript" src="js/utils/constants.js"></script>
-		<script type="text/javascript" src="js/libs/microtemplate.js"></script>
-		<script type="text/javascript" src="js/libs/tinyPubSub.js"></script>
-		<script type="text/javascript" src="js/searchWidget.js"></script>
-		<script type="text/javascript" src="js/searchActions.js"></script>
-		<script type="text/javascript" src="js/themeActions.js"></script>
-		<script type="text/javascript" src="js/searchResultsUIUpdater.js"></script>
-		<script type="text/javascript" src="js/searchInputUIUpdater.js"></script>
-		<script type="text/javascript" src="js/themeMenuUIUpdater.js"></script>
+		<script src="http://requirejs.org/docs/release/2.1.20/minified/require.js" data-main="js/app"></script>
 
 		<script type="text/html" id="tmpl_searchResult">
 		    <li data-result-id="<%= id %>" data-name="<%= name %>">

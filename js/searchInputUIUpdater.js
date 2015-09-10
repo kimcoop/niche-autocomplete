@@ -2,14 +2,14 @@
  * searchInputUIUpdater.js
  */
 
-(function($) {
+define(['tinyPubSub', 'jquery'], function() {
   'use strict';
 
   var populateInput = function(data) {
     var index = data.index || 0; // default to first item
     var selectionName = $('.list-results li').eq(index).data('name');
     $('.input-search').val(selectionName);
-  }
+  };
 
   $.subscribe('search:selectResult', function(event, data) {
     populateInput(data);
@@ -23,4 +23,4 @@
     $('.input-search').val('');
   });
 
-})(jQuery);
+});

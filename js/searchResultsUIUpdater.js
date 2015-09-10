@@ -2,7 +2,7 @@
  * searchResultsUIUpdater.js
  */
 
-(function($) {
+require(['jquery', 'microtemplate'], function() {
   'use strict';
 
   $.subscribe('theme:activate', function(event, data) {
@@ -52,4 +52,4 @@
       .children('a')[0].click();
   });
 
-})(jQuery);
+});

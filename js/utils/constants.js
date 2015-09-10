@@ -2,7 +2,7 @@
  * constants.js
  */
 
-(function() {
+define([], function() {
  'use strict';
     
   var Constants = {
@@ -21,6 +21,6 @@
     }
   };
 
-  window.Constants = window.Constants || Constants;
+  return Constants;
 
-})();
+});

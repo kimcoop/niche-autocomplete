@@ -106,21 +106,15 @@
   }
 }
 
-.theme-1 .list-results a:hover,
-.theme-1 .list-results a:focus,
 .theme-1 .result-active {
   background: inherit;
   color: #D9CEB2;
 }
 
-.theme-1 .list-results a:hover i,
-.theme-1 .list-results a:focus i,
 .theme-1 .result-active i {
   display: inline-block;
 }
 
-.theme-1 .list-results a:hover .result-name,
-.theme-1 .list-results a:focus .result-name,
 .theme-1 .result-active .result-name {
   font-weight: normal;
   padding: 0;

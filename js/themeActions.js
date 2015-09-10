@@ -2,7 +2,7 @@
  * themeActions.js
  */
 
-(function($) {
+require(['jquery', 'tinyPubSub'], function() {
   'use strict';
 
     $(function() {
@@ -14,4 +14,4 @@
       });
     });
     
-})(jQuery);
+});
