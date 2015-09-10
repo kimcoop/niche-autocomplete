@@ -2,6 +2,17 @@
  * _autocomplete.scss
  */
 
+
+@mixin font-awesome-icon($content, $font-size: 'inherit') {
+  content: $content;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: $font-size;
+  text-rendering: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
 %result-selected {
   color: red; // TODO;
 }
