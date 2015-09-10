@@ -2,17 +2,24 @@
  * _autocomplete.scss
  */
 
+%result-selected {
+  color: red; // TODO;
+}
+
 .list-results {
   margin-bottom: 50px;
   position: absolute;
   z-index: 5;
 
-  a {
-    display: block;
+  .result-selected a {
+    @extend %result-selected;
   }
 
-  i {
-    display: none;
+  a {
+    display: block;
+    &:active {
+      @extend %result-selected;
+    }
   }
 }
 
