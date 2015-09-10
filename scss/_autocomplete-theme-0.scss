@@ -1,0 +1,50 @@
+
+/**
+ * _autocomplete-theme-0.scss
+ */
+
+.theme-0 {
+
+  .input-search {
+    border-radius: 20px;
+  }
+
+  .list-results {
+    background: white;
+    border: thin solid #ccc;
+    border-top: none;
+    border-bottom: none;
+    left: 4%;
+    width: 92%;
+
+    i {
+      display: none;
+    }
+
+    li {
+      border-bottom: thin solid #ccc;
+    }
+
+    a {
+      padding: 1em;
+    }
+  }
+
+  .result-name {
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+  }
+
+  .result-location {
+    margin-left: 2px;
+  }
+
+  .result-active {
+    background: #efefef;
+
+    .result-name {
+      font-weight: bold;
+      padding-left: 5px;
+    }
+  }
+}
