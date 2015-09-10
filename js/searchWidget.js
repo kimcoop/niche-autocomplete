@@ -28,6 +28,6 @@
     });
   }
 
-  window.SearchWidget = window.SearchWidget || SearchWidget;
+  window.SearchWidget = window.SearchWidget || new SearchWidget();
 
 })(jQuery, Constants);

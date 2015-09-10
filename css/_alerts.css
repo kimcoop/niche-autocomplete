@@ -1,0 +1,15 @@
+/**
+ * _alerts.css
+ */
+
+.alert {
+  border-radius: 2px;
+  margin: 1em auto;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.alert-error {
+  border: thin solid #FF9494;
+  color: #FF9494;
+}

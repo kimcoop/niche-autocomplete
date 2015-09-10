@@ -37,17 +37,6 @@ small {
   font-size: 0.8em;
 }
 
-.alert {
-  border-radius: 2px;
-  margin: 10px auto;
-  text-align: center;
-}
-
-.alert-error {
-  border: thin solid red;
-  color: red;
-}
-
 .hidden {
   display: none;
 }

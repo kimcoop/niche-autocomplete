@@ -13,12 +13,9 @@
         e.preventDefault(); // Enter keypress should not submit form
       });
       
-      $('.input-search').on('blur', function() {
-        // TODO
-        // $.publish('search:exitResults');
+      $(document).on('blur', '.form-search', function() {
+        $.publish('search:exitResults');
       });
-
-      var Search = new SearchWidget();
 
       $('.input-search').on('keyup', function(e) {
 
@@ -51,7 +48,7 @@
           return false;
         }
         
-        Search.fetch( $(this).val().trim() );
+        SearchWidget.fetch( $(this).val().trim() );
         return false;
       });
 

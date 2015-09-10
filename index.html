@@ -3,7 +3,7 @@
 	<head>
 		<title>Autocomplete - Niche Recruiting Reviews - Niche</title>		
 		<link rel="stylesheet" href="css/main.css"/>
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> TODO: font awesome? -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link href='https://fonts.googleapis.com/css?family=Droid+Serif|Droid+Sans' rel='stylesheet' type='text/css'>
 	</head>
 
@@ -26,9 +26,9 @@
 			</p>
 		</div><!-- .container-themes -->
 
-		<div class="container container-autocomplete theme-0">
-			<div class="alert alert-error error-search hidden"></div>
+		<div class="container alert alert-error error-search hidden"></div>
 
+		<div class="container container-autocomplete theme-0">
 			<form class="form form-search">
 				<div class="input-search-container">
 					<input type="text" class="input input-search" placeholder="Start your search here" />
@@ -59,7 +59,10 @@
 		<script type="text/html" id="tmpl_searchResult">
 		    <li data-result-id="<%= id %>" data-name="<%= name %>">
 		    	<a href="<%= url %>">
-		    		<span class="result-name"><%= name %></span>
+		    		<span class="result-name">
+		    			<%= name %>
+		    			<i class="fa fa-chevron-circle-right"></i>
+		    		</span>
 		    		<% if (location !== 'null') { %>
 			    		<small class="result-location"><%= location %></small>
 		    		<% } %>

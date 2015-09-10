@@ -18,6 +18,10 @@
   z-index: 5;
 }
 
+.list-results i {
+  display: none;
+}
+
 .list-results li {
   border-bottom: thin solid #ccc;
 }

@@ -14,12 +14,13 @@
   });
 
   $.subscribe('search:jsonLoadError', function(event, data) {
-    debugger;
-    // TODO
-    //  $('.error-search') 
+    $('.error-search').text(data.message)
+      .removeClass('hidden');
   });
   
   $.subscribe('search:jsonLoadSuccess', function(event, data) {
+    $('.error-search').addClass('hidden'); // Ensure error display is hidden
+
     var markup = '';
 
     $.each(data.results, function(i, result) {
