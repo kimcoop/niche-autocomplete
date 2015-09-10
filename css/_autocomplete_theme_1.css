@@ -97,6 +97,15 @@
   width: 29%;
 }
 
+@media (max-width: 500px) {
+  .theme-1 .result-name,
+  .theme-1 .result-location {
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+}
+
 .theme-1 .list-results a:hover,
 .theme-1 .list-results a:focus,
 .theme-1 .list-results .result-active {
