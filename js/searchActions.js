@@ -17,9 +17,16 @@
         $.publish('search:exitResults');
       });
 
+      $('.input-search').keydown(function(e) {
+        // Prevent wandering cursor
+        if (e.keyCode === Constants.keyCodes.UP) {
+            return false;
+        }
+        return true;
+      });
+
       $('.input-search').on('keyup', function(e) {
 
-        // TODO: repvent wandering cursor
         if (e.keyCode === Constants.keyCodes.ESCAPE) {
           $.publish('search:exitResults');
           return false;
