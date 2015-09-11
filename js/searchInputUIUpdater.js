@@ -2,7 +2,7 @@
  * searchInputUIUpdater.js
  */
 
-define(['tinyPubSub', 'jquery'], function() {
+require(['tinyPubSub', 'jquery'], function() {
   'use strict';
 
   var populateInput = function(data) {
@@ -15,7 +15,7 @@ define(['tinyPubSub', 'jquery'], function() {
     populateInput(data);
   });
 
-  $.subscribe('search:navigateResult', function(event, data) {
+  $.subscribe('search:activateResult', function(event, data) {
     populateInput(data);
   });
 

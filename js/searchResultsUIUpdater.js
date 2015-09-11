@@ -42,7 +42,7 @@ require(['jquery', 'microtemplate', 'tinyPubSub'], function() {
     $('.list-results .result-active').removeClass('result-active');
   });
   
-  $.subscribe('search:navigateResult', function(event, data) {
+  $.subscribe('search:activateResult', function(event, data) {
     $('.list-results .result-active').removeClass('result-active'); // For good measure
 
     var index = data.index || 0;

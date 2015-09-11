@@ -1,8 +1,8 @@
 /**
- * autoCompleteActions.js
+ * searchActions.js
  */
 
- define(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constants, SearchService) {
+ require(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constants, SearchService) {
   'use strict';
 
   $(function() {
@@ -27,7 +27,7 @@
     });
 
     $('.list-results').on('mouseenter', 'li', function() {
-      $.publish('search:navigateResult', { index: $(this).index() });
+      $.publish('search:activateResult', { index: $(this).index() });
     }).on('mouseleave', 'li', function() {
       $.publish('search:exitResult');
     });
@@ -39,30 +39,22 @@
         return false;
       }
 
-      if (e.keyCode === Constants.keyCodes.ENTER && $('.list-results .result-active').length) {
-        $.publish('search:selectResult', { index: $('.list-results .result-active').index() });
-        return false;
-      }
+      var $activeResult = $('.list-results .result-active'),
+        activeIndex = $activeResult.index(),
+        nextIndex;
 
-      if (e.keyCode === Constants.keyCodes.DOWN) {
-        if ($('.list-results .result-active').next('li').length) {
-          $.publish('search:navigateResult', { index: $('.list-results .result-active').index() + 1 });
-        } else { // Wrap or activate first item, same effect
-          $.publish('search:navigateResult', { index: 0 });
-        }
-        return false;
-      }
-
-      if (e.keyCode === Constants.keyCodes.UP) {
-        if ($('.list-results .result-active').prev('li').length) {
-          $.publish('search:navigateResult', { index: $('.list-results .result-active').index() - 1 });
-        } else { // Wrap or activate last item, same effect
-          $.publish('search:navigateResult', { index: -1 });
-        }
-        return false;
+      if (e.keyCode === Constants.keyCodes.ENTER && $activeResult.length) {
+        $.publish('search:selectResult', { index: activeIndex });
+      } else if (e.keyCode === Constants.keyCodes.DOWN) {
+        nextIndex = $activeResult.next('li').length ? activeIndex + 1 : 0;
+        $.publish('search:activateResult', { index: nextIndex });
+      } else if (e.keyCode === Constants.keyCodes.UP) {
+        nextIndex = $activeResult.prev('li').length ? activeIndex - 1 : -1;
+        $.publish('search:activateResult', { index: nextIndex });
+      } else {
+        SearchService.fetch( $(this).val().trim() );
       }
       
-      SearchService.fetch( $(this).val().trim() );
       return false;
     });
 
