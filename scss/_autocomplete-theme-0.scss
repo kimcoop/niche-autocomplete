@@ -3,8 +3,18 @@
  * _autocomplete-theme-0.scss
  */
 
-%result-selected {
-  color: #6D7F83;
+ $med-teal: #6D7F83;
+ $icon-search: "\f002";
+
+ $width-search-icon: 23px;
+ $padding-top-search-input: 10px;
+ $font-size-search-input: 14px;
+ $padding-left-search-input: 15px;
+
+%result-selected-t0 {
+  color: $med-teal;
+  position: relative;
+  top: 1px; // For slight "depress"
 }
 
 .theme-0 {
@@ -12,17 +22,24 @@
   .input-search-container {
     position: relative;
     &::after {
-      @include font-awesome-icon("\f002", 1.5em);
+      @include font-awesome-icon($icon-search, 1.5em);
       color: #ccc;
       position: absolute;
-      right: 9px;
-      top: 3px;
+      right: $padding-left-search-input/2; // Don't want equal padding, just relative
+      height: 2*$padding-top-search-input + $font-size-search-input;
+      line-height: 2*$padding-top-search-input + $font-size-search-input;
+      vertical-align: middle;
+      top: 0;
+      width: $width-search-icon;
     }
   }
 
   .input-search {
     border-radius: 20px;
-    padding-right: 35px; // Buffer for search icon
+    padding-left: $padding-left-search-input;
+    padding-right: $width-search-icon + $padding-left-search-input;
+    padding-top: $padding-top-search-input;
+    padding-bottom: $padding-top-search-input;
   }
 
   .list-results {
@@ -41,12 +58,12 @@
       padding: 1em;
 
       &:active {
-        @extend %result-selected;
+        @extend %result-selected-t0;
       }
     }
 
     .result-selected a {
-      @extend %result-selected;
+      @extend %result-selected-t0;
     }
   }
 
