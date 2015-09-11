@@ -22,6 +22,7 @@ require.config({
 // Modules to load go here
 require([
   'jsonp', 
+  'numResultsUIUpdater',
   'searchActions', 
   'searchInputUIUpdater',
   'searchResultsUIUpdater',

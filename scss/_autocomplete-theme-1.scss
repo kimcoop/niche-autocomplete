@@ -13,6 +13,9 @@
 
  $icon-caret: "\f138";
 
+ $border-width: 1em;
+ $margin-hz-result: 1em;
+
  %result-selected-t1 {
   .result-name {
     &::after {
@@ -28,6 +31,10 @@
 
   small {
     color: $faint-green;
+  }
+
+  .container-num-results {
+    padding-right: $border-width + $margin-hz-result;
   }
 
   .input-search-container {
@@ -59,7 +66,7 @@
 
   .list-results {
     background: $dark-tan;
-    border: 1em solid $light-teal;
+    border: $border-width solid $light-teal;
     border-top: 0;
     color: white;
     left: 0;
@@ -81,8 +88,8 @@
     a {
       border-bottom: thin dashed $light-teal;
       padding: 1em 0;
-      margin-left: 1em;
-      margin-right: 1em;
+      margin-left: $margin-hz-result;
+      margin-right: $margin-hz-result;
 
       &:active {
         @extend %result-selected-t1;

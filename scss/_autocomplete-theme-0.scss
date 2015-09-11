@@ -18,6 +18,11 @@
 
 .theme-0 {
 
+  .container-num-results {
+    font-style: italic;
+    padding-right: 20px;
+  }
+
   .input-search-container {
     height: 40px;
     &::after {
@@ -25,6 +30,7 @@
       clear: both;
     }
   }
+
   .input-search,
   .link-search {
     border: thin solid #ccc;

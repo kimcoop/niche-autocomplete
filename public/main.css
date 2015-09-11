@@ -171,6 +171,13 @@ small {
   position: relative;
 }
 
+/* line 19, ../scss/_autocomplete.scss */
+.container-num-results {
+  line-height: 1.5em;
+  min-height: 1.5em;
+  text-align: right;
+}
+
 /**
  * _autocomplete-theme-0.scss
  */
@@ -183,15 +190,20 @@ small {
 }
 
 /* line 21, ../scss/_autocomplete-theme-0.scss */
+.theme-0 .container-num-results {
+  font-style: italic;
+  padding-right: 20px;
+}
+/* line 26, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search-container {
   height: 40px;
 }
-/* line 23, ../scss/_autocomplete-theme-0.scss */
+/* line 28, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search-container::after {
   content: '';
   clear: both;
 }
-/* line 28, ../scss/_autocomplete-theme-0.scss */
+/* line 34, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search,
 .theme-0 .link-search {
   border: thin solid #ccc;
@@ -201,7 +213,7 @@ small {
   padding-top: 6px;
   padding-bottom: 6px;
 }
-/* line 38, ../scss/_autocomplete-theme-0.scss */
+/* line 44, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search {
   border-radius: 20px 0 0 20px;
   border-right: 0;
@@ -209,11 +221,11 @@ small {
   padding-right: 0;
   width: 92%;
 }
-/* line 45, ../scss/_autocomplete-theme-0.scss */
+/* line 51, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search:active ~ .link-search, .theme-0 .input-search:focus ~ .link-search {
   color: #99B2B7;
 }
-/* line 51, ../scss/_autocomplete-theme-0.scss */
+/* line 57, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .link-search {
   border-radius: 0 20px 20px 0;
   border-left: 0;
@@ -224,7 +236,7 @@ small {
   text-align: center;
   width: 8%;
 }
-/* line 62, ../scss/_autocomplete-theme-0.scss */
+/* line 68, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .list-results {
   background: white;
   border: thin solid #ccc;
@@ -233,30 +245,30 @@ small {
   left: 4%;
   width: 92%;
 }
-/* line 70, ../scss/_autocomplete-theme-0.scss */
+/* line 76, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .list-results li {
   border-bottom: thin solid #ccc;
 }
-/* line 74, ../scss/_autocomplete-theme-0.scss */
+/* line 80, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .list-results a {
   padding: 1em;
 }
-/* line 87, ../scss/_autocomplete-theme-0.scss */
+/* line 93, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result {
   position: relative;
   -moz-transition: background 0.3s ease;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
 }
-/* line 94, ../scss/_autocomplete-theme-0.scss */
+/* line 100, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result-location {
   margin-left: 2px;
 }
-/* line 98, ../scss/_autocomplete-theme-0.scss */
+/* line 104, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result-active {
   background: #efefef;
 }
-/* line 101, ../scss/_autocomplete-theme-0.scss */
+/* line 107, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result-active .result-name {
   font-weight: bold;
 }
@@ -266,29 +278,33 @@ small {
  *
  * Palette: http://www.colourlovers.com/palette/77121/Good_Friends
  */
-/* line 18, ../scss/_autocomplete-theme-1.scss */
+/* line 21, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .list-results a:active .result-name::after, .theme-1 .list-results .result-selected a .result-name::after {
   -moz-transform: translateX(10px) rotate(360deg);
   -webkit-transform: translateX(10px) rotate(360deg);
   transform: translateX(10px) rotate(360deg);
 }
 
-/* line 26, ../scss/_autocomplete-theme-1.scss */
+/* line 29, ../scss/_autocomplete-theme-1.scss */
 .theme-1 {
   font-family: 'Droid Serif', Georgia, Times, serif;
 }
-/* line 29, ../scss/_autocomplete-theme-1.scss */
+/* line 32, ../scss/_autocomplete-theme-1.scss */
 .theme-1 small {
   color: #D5DED9;
 }
-/* line 33, ../scss/_autocomplete-theme-1.scss */
+/* line 36, ../scss/_autocomplete-theme-1.scss */
+.theme-1 .container-num-results {
+  padding-right: 2em;
+}
+/* line 40, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .input-search-container {
   background: #99B2B7;
   display: inline-block;
   padding: 1em 1em 0;
   width: 100%;
 }
-/* line 40, ../scss/_autocomplete-theme-1.scss */
+/* line 47, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .input-search {
   background: transparent;
   border: none;
@@ -300,15 +316,15 @@ small {
   line-height: 1.2em;
   padding: 0 0 0.25em;
 }
-/* line 52, ../scss/_autocomplete-theme-1.scss */
+/* line 59, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .link-search {
   display: none;
 }
-/* line 56, ../scss/_autocomplete-theme-1.scss */
+/* line 63, ../scss/_autocomplete-theme-1.scss */
 .theme-1 ::-webkit-input-placeholder {
   color: #6D7F83;
 }
-/* line 60, ../scss/_autocomplete-theme-1.scss */
+/* line 67, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .list-results {
   background: #948C75;
   border: 1em solid #99B2B7;
@@ -317,28 +333,28 @@ small {
   left: 0;
   width: 100%;
 }
-/* line 68, ../scss/_autocomplete-theme-1.scss */
+/* line 75, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .list-results:not(:empty) {
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
 }
-/* line 74, ../scss/_autocomplete-theme-1.scss */
+/* line 81, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .list-results li {
   border-bottom: none;
 }
-/* line 76, ../scss/_autocomplete-theme-1.scss */
+/* line 83, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .list-results li:last-of-type a {
   border-bottom: 0;
 }
-/* line 81, ../scss/_autocomplete-theme-1.scss */
+/* line 88, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .list-results a {
   border-bottom: thin dashed #99B2B7;
   padding: 1em 0;
   margin-left: 1em;
   margin-right: 1em;
 }
-/* line 97, ../scss/_autocomplete-theme-1.scss */
+/* line 104, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .result-name {
   font-family: 'Droid Sans', Georgia, Times, serif;
   font-size: 0.9em;
@@ -348,7 +364,7 @@ small {
   transition: color 0.3s;
   width: 70%;
 }
-/* line 106, ../scss/_autocomplete-theme-1.scss */
+/* line 113, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .result-name::after {
   content: "";
   display: inline-block;
@@ -365,30 +381,30 @@ small {
   -webkit-transform: translateX(-5px) rotate(-15deg);
   transform: translateX(-5px) rotate(-15deg);
 }
-/* line 118, ../scss/_autocomplete-theme-1.scss */
+/* line 125, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .result-location {
   text-align: right;
   width: 29%;
 }
-/* line 123, ../scss/_autocomplete-theme-1.scss */
+/* line 130, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .result-active {
   color: #D9CEB2;
 }
-/* line 126, ../scss/_autocomplete-theme-1.scss */
+/* line 133, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .result-active .result-name::after {
   opacity: 1;
   -moz-transform: translateX(0px) rotate(0);
   -webkit-transform: translateX(0px) rotate(0);
   transform: translateX(0px) rotate(0);
 }
-/* line 134, ../scss/_autocomplete-theme-1.scss */
+/* line 141, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .result-name,
 .theme-1 .result-location {
   display: inline-block;
   vertical-align: middle;
 }
 @media (max-width: 500px) {
-  /* line 134, ../scss/_autocomplete-theme-1.scss */
+  /* line 141, ../scss/_autocomplete-theme-1.scss */
   .theme-1 .result-name,
   .theme-1 .result-location {
     display: block;

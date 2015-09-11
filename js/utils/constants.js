@@ -18,6 +18,11 @@ define(function() {
 
     getSearchUrlForTerm: function(term) {
       return Constants.URL_SEARCH_BASE + term;
+    },
+
+    getResultsTextForNum: function(num) {
+      var noun = num === 1 ? 'result' : 'results';
+      return num + ' ' + noun;
     }
   };
 
