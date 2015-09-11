@@ -52,7 +52,7 @@ require(['jquery', 'microtemplate', 'tinyPubSub'], function() {
   $.subscribe('search:selectResult', function(event, data) {
     var index = data.index || 0;
     $('.list-results li').eq(index)
-      .addClass('selected') // TODO: select effect
+      .addClass('result-selected')
       .children('a')[0].click();
   });
 
