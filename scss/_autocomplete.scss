@@ -13,24 +13,13 @@
   -webkit-font-smoothing: antialiased;
 }
 
-%result-selected {
-  color: red; // TODO;
-}
-
 .list-results {
   margin-bottom: 50px;
   position: absolute;
   z-index: 5;
 
-  .result-selected a {
-    @extend %result-selected;
-  }
-
   a {
     display: block;
-    &:active {
-      @extend %result-selected;
-    }
   }
 }
 

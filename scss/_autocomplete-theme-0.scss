@@ -3,6 +3,10 @@
  * _autocomplete-theme-0.scss
  */
 
+%result-selected {
+  color: #6D7F83;
+}
+
 .theme-0 {
 
   .input-search-container {
@@ -18,7 +22,7 @@
 
   .input-search {
     border-radius: 20px;
-    padding-right: 35px;
+    padding-right: 35px; // Buffer for search icon
   }
 
   .list-results {
@@ -35,6 +39,14 @@
 
     a {
       padding: 1em;
+
+      &:active {
+        @extend %result-selected;
+      }
+    }
+
+    .result-selected a {
+      @extend %result-selected;
     }
   }
 
