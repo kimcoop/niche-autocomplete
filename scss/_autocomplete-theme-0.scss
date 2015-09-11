@@ -4,15 +4,14 @@
  */
 
  $med-teal: #6D7F83;
- $icon-search: "\f002";
-
- $width-search-icon: 23px;
- $padding-top-search-input: 10px;
- $font-size-search-input: 14px;
- $padding-left-search-input: 15px;
+ $light-teal: #99B2B7;
+ $padding-top-search: 6px;
+ $padding-left-search: 15px;
+ $width-input-search: 92%;
 
 %result-selected-t0 {
   color: $med-teal;
+  color: $light-teal;
   position: relative;
   top: 1px; // For slight "depress"
 }
@@ -20,26 +19,44 @@
 .theme-0 {
 
   .input-search-container {
-    position: relative;
+    height: 40px;
     &::after {
-      @include font-awesome-icon($icon-search, 1.5em);
-      color: #ccc;
-      position: absolute;
-      right: $padding-left-search-input/2; // Don't want equal padding, just relative
-      height: 2*$padding-top-search-input + $font-size-search-input;
-      line-height: 2*$padding-top-search-input + $font-size-search-input;
-      vertical-align: middle;
-      top: 0;
-      width: $width-search-icon;
+      content: '';
+      clear: both;
+    }
+  }
+  .input-search,
+  .link-search {
+    border: thin solid #ccc;
+    display: inline-block;
+    float: left;
+    height: 100%;
+    padding-top: $padding-top-search;
+    padding-bottom: $padding-top-search;
+  }  
+
+  .input-search {
+    border-radius: 20px 0 0 20px;
+    border-right: 0;
+    padding-left: $padding-left-search;
+    padding-right: 0;
+    width: $width-input-search;
+
+    &:active ~ .link-search,
+    &:focus ~ .link-search  {
+      color: $light-teal;
     }
   }
 
-  .input-search {
-    border-radius: 20px;
-    padding-left: $padding-left-search-input;
-    padding-right: $width-search-icon + $padding-left-search-input;
-    padding-top: $padding-top-search-input;
-    padding-bottom: $padding-top-search-input;
+  .link-search {
+    border-radius: 0 20px 20px 0;
+    border-left: 0;
+    -moz-transition: color 0.2s ease;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+    font-size: 1.2em;
+    text-align: center;
+    width: 100 - $width-input-search;
   }
 
   .list-results {

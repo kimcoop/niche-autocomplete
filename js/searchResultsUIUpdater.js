@@ -17,7 +17,7 @@ require(['jquery', 'microtemplate', 'tinyPubSub'], function() {
     $('.error-search').text(data.message)
       .removeClass('hidden');
   });
-  
+
   $.subscribe('search:jsonLoadSuccess', function(event, data) {
     $('.error-search').addClass('hidden'); // Ensure error display is hidden
 
@@ -41,7 +41,7 @@ require(['jquery', 'microtemplate', 'tinyPubSub'], function() {
   $.subscribe('search:exitResult', function(event, data) {
     $('.list-results .result-active').removeClass('result-active');
   });
-  
+
   $.subscribe('search:activateResult', function(event, data) {
     $('.list-results .result-active').removeClass('result-active'); // For good measure
 

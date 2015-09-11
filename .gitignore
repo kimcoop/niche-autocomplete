@@ -1,3 +1,4 @@
 .DS_Store
 node_modules
 .sass-cache
+public/*.map # don't need this for now

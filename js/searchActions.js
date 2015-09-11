@@ -2,7 +2,7 @@
  * searchActions.js
  */
 
- require(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constants, SearchService) {
+require(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constants, SearchService) {
   'use strict';
 
   $(function() {
@@ -12,22 +12,38 @@
     $('.form-search').submit(function(e) {
       e.preventDefault(); // Enter keypress should not submit form
     });
-    
-    $(document).on('blur', '.form-search', function(e) {
-      if (!$(event.relatedTarget).parents('.result').length) {
-        $.publish('search:exitResults'); // Don't fire event if event is clicking on a search result
+
+    $(document).on('click', function(e) {
+      // Blur doesn't quite cut it since click event (on .result, for ex)
+      // fires after blur, so clicking .result will :exitResults first
+      if (!$(e.target).parents('.form-search').length) {
+        $.publish('search:exitResults');
+      }
+    });
+
+    $('.link-search').click(function(e) {
+      e.preventDefault();
+      var $activeResult = $('.list-results .result-active');
+
+      // If search icon is clicked *and* there's an active result,
+      // navigate to it. Otherwise, no-op
+      if ($activeResult.length) {
+        $.publish('search:selectResult', {
+          index: $activeResult.index()
+        });
       }
     });
 
     $('.input-search').keydown(function(e) {
       if (e.keyCode === Constants.keyCodes.UP) { // Prevent wandering cursor
-          return false;
+        return false;
       }
-      return true;
     });
 
     $('.list-results').on('mouseenter', 'li', function() {
-      $.publish('search:activateResult', { index: $(this).index() });
+      $.publish('search:activateResult', {
+        index: $(this).index()
+      });
     }).on('mouseleave', 'li', function() {
       $.publish('search:exitResult');
     });
@@ -40,21 +56,24 @@
       }
 
       var $activeResult = $('.list-results .result-active'),
-        activeIndex = $activeResult.index(),
-        nextIndex;
+        activeIndex = $activeResult.index();
 
       if (e.keyCode === Constants.keyCodes.ENTER && $activeResult.length) {
-        $.publish('search:selectResult', { index: activeIndex });
+        $.publish('search:selectResult', {
+          index: activeIndex
+        });
       } else if (e.keyCode === Constants.keyCodes.DOWN) {
-        nextIndex = $activeResult.next('li').length ? activeIndex + 1 : 0;
-        $.publish('search:activateResult', { index: nextIndex });
+        $.publish('search:activateResult', {
+          index: $activeResult.next('li').length ? activeIndex + 1 : 0
+        });
       } else if (e.keyCode === Constants.keyCodes.UP) {
-        nextIndex = $activeResult.prev('li').length ? activeIndex - 1 : -1;
-        $.publish('search:activateResult', { index: nextIndex });
+        $.publish('search:activateResult', {
+          index: $activeResult.prev('li').length ? activeIndex - 1 : -1
+        });
       } else {
-        SearchService.fetch( $(this).val().trim() );
+        SearchService.fetch($(this).val().trim());
       }
-      
+
       return false;
     });
 

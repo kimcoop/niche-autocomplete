@@ -49,6 +49,10 @@
     padding: 0 0 0.25em;
   }
 
+  .link-search {
+    display: none;
+  }
+
   ::-webkit-input-placeholder {
     color: $med-teal;
   }
