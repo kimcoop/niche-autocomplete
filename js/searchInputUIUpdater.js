@@ -5,8 +5,10 @@
 require(['tinyPubSub', 'jquery'], function() {
   'use strict';
 
+  var originalSearchTerm = ''; // Store this to recall on result mouseout
+
   var populateInput = function(data) {
-    var index = data.index || 0; // default to first item
+    var index = data.index || 0;
     var selectionName = $('.list-results li').eq(index).data('name');
     $('.input-search').val(selectionName);
   };
@@ -23,8 +25,12 @@ require(['tinyPubSub', 'jquery'], function() {
     $('.input-search').val('');
   });
 
+  $.subscribe('search:jsonLoadSuccess', function(event, data) {
+    originalSearchTerm = data.searchTerm;
+  });
+
   $.subscribe('search:exitResult', function(event, data) {
-    $('.input-search').val('');
+    $('.input-search').val(originalSearchTerm);
   });
 
 });

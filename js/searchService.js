@@ -25,6 +25,8 @@ define(['constants', 'jquery'], function(Constants) {
           return;
         }
 
+        response.searchTerm = searchTerm; // Keep track of this
+
         $.publish('search:jsonLoadSuccess', response);
       });
     }
