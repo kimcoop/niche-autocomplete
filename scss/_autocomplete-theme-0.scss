@@ -111,7 +111,6 @@
     .result-name {
       display: inline-block;
       position: relative;
-      font-weight: bold;
       &::after {
         content: attr(data-name);
         left: 0;

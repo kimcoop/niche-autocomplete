@@ -278,9 +278,8 @@ small {
 .theme-0 .result-active .result-name {
   display: inline-block;
   position: relative;
-  font-weight: bold;
 }
-/* line 115, ../scss/_autocomplete-theme-0.scss */
+/* line 114, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result-active .result-name::after {
   content: attr(data-name);
   left: 0;
