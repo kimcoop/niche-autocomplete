@@ -173,37 +173,43 @@ small {
 
 /* line 19, ../scss/_autocomplete.scss */
 .container-num-results {
-  line-height: 1.5em;
-  min-height: 1.5em;
+  line-height: 1.3em;
+  min-height: 1.3em;
   text-align: right;
 }
 
 /**
  * _autocomplete-theme-0.scss
  */
-/* line 12, ../scss/_autocomplete-theme-0.scss */
+/* line 11, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .list-results a:active, .theme-0 .list-results .result-selected a {
-  color: #6D7F83;
   color: #99B2B7;
   position: relative;
-  top: 1px;
+}
+/* line 14, ../scss/_autocomplete-theme-0.scss */
+.theme-0 .list-results a:active .result-name::after, .theme-0 .list-results .result-selected a .result-name::after {
+  opacity: 0;
+  -moz-transform: scale(1.15);
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);
+  z-index: 2;
 }
 
-/* line 21, ../scss/_autocomplete-theme-0.scss */
+/* line 25, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .container-num-results {
   font-style: italic;
   padding-right: 20px;
 }
-/* line 26, ../scss/_autocomplete-theme-0.scss */
+/* line 30, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search-container {
   height: 40px;
 }
-/* line 28, ../scss/_autocomplete-theme-0.scss */
+/* line 32, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search-container::after {
   content: '';
   clear: both;
 }
-/* line 34, ../scss/_autocomplete-theme-0.scss */
+/* line 38, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search,
 .theme-0 .link-search {
   border: thin solid #ccc;
@@ -213,7 +219,7 @@ small {
   padding-top: 6px;
   padding-bottom: 6px;
 }
-/* line 44, ../scss/_autocomplete-theme-0.scss */
+/* line 48, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search {
   border-radius: 20px 0 0 20px;
   border-right: 0;
@@ -221,11 +227,11 @@ small {
   padding-right: 0;
   width: 92%;
 }
-/* line 51, ../scss/_autocomplete-theme-0.scss */
+/* line 55, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .input-search:active ~ .link-search, .theme-0 .input-search:focus ~ .link-search {
   color: #99B2B7;
 }
-/* line 57, ../scss/_autocomplete-theme-0.scss */
+/* line 61, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .link-search {
   border-radius: 0 20px 20px 0;
   border-left: 0;
@@ -236,7 +242,7 @@ small {
   text-align: center;
   width: 8%;
 }
-/* line 68, ../scss/_autocomplete-theme-0.scss */
+/* line 72, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .list-results {
   background: white;
   border: thin solid #ccc;
@@ -245,32 +251,45 @@ small {
   left: 4%;
   width: 92%;
 }
-/* line 76, ../scss/_autocomplete-theme-0.scss */
+/* line 80, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .list-results li {
   border-bottom: thin solid #ccc;
 }
-/* line 80, ../scss/_autocomplete-theme-0.scss */
+/* line 84, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .list-results a {
   padding: 1em;
 }
-/* line 93, ../scss/_autocomplete-theme-0.scss */
+/* line 97, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result {
   position: relative;
   -moz-transition: background 0.3s ease;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
 }
-/* line 100, ../scss/_autocomplete-theme-0.scss */
+/* line 104, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result-location {
   margin-left: 2px;
 }
-/* line 104, ../scss/_autocomplete-theme-0.scss */
+/* line 108, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result-active {
   background: #efefef;
 }
-/* line 107, ../scss/_autocomplete-theme-0.scss */
+/* line 111, ../scss/_autocomplete-theme-0.scss */
 .theme-0 .result-active .result-name {
+  display: inline-block;
+  position: relative;
   font-weight: bold;
+}
+/* line 115, ../scss/_autocomplete-theme-0.scss */
+.theme-0 .result-active .result-name::after {
+  content: attr(data-name);
+  left: 0;
+  position: absolute;
+  top: 0;
+  -moz-transition: opacity 0.9s ease, -moz-transform 0.6s ease;
+  -webkit-transition: opacity 0.9s ease, -webkit-transform 0.6s ease;
+  transition: opacity 0.9s ease, transform 0.6s ease;
+  z-index: -1;
 }
 
 /**

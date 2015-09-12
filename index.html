@@ -45,7 +45,7 @@
 		<script type="text/html" id="tmpl_searchResult">
 		    <li class="result" data-result-id="<%= id %>" data-name="<%= name %>">
 		    	<a href="<%= url %>">
-		    		<span class="result-name">
+		    		<span class="result-name" data-name="<%= name %>">
 		    			<%= name %>
 		    		</span>
 		    		<% if (location !== 'null') { %>
