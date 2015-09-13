@@ -79,31 +79,31 @@ table {
   box-sizing: border-box;
 }
 
-/* line 11, ../scss/_base.scss */
+/* line 9, ../scss/_base.scss */
 body {
   font-family: arial;
   color: #555;
 }
 
-/* line 16, ../scss/_base.scss */
+/* line 14, ../scss/_base.scss */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 21, ../scss/_base.scss */
+/* line 19, ../scss/_base.scss */
 .container {
   margin: 0 auto;
   max-width: 85%;
   width: 500px;
 }
 
-/* line 27, ../scss/_base.scss */
+/* line 25, ../scss/_base.scss */
 .hidden {
   display: none;
 }
 
-/* line 31, ../scss/_base.scss */
+/* line 29, ../scss/_base.scss */
 input[type=text] {
   border: 1px solid #ccc;
   background-color: white;
@@ -155,24 +155,26 @@ small {
 /* Widgets */
 /**
  * _autocomplete.scss
+ *
+ * Component styles common to both themes
  */
-/* line 5, ../scss/_autocomplete.scss */
+/* line 7, ../scss/_autocomplete.scss */
 .list-results {
   margin-bottom: 50px;
   position: absolute;
   z-index: 5;
 }
-/* line 10, ../scss/_autocomplete.scss */
+/* line 12, ../scss/_autocomplete.scss */
 .list-results a {
   display: block;
 }
 
-/* line 15, ../scss/_autocomplete.scss */
+/* line 17, ../scss/_autocomplete.scss */
 .form-search {
   position: relative;
 }
 
-/* line 19, ../scss/_autocomplete.scss */
+/* line 21, ../scss/_autocomplete.scss */
 .container-num-results {
   line-height: 1.3em;
   min-height: 1.3em;
