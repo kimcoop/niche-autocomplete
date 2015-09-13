@@ -330,13 +330,25 @@ small {
   line-height: 1.2em;
   padding: 0 0 0.25em;
 }
-/* line 50, ../scss/_autocomplete-theme-1.scss */
-.theme-1 .link-search {
-  display: none;
+/* line 61, ../../../../../.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+.theme-1 .input-search:-moz-placeholder {
+  color: #6D7F83;
+}
+/* line 64, ../../../../../.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+.theme-1 .input-search::-moz-placeholder {
+  color: #6D7F83;
+}
+/* line 67, ../../../../../.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+.theme-1 .input-search:-ms-input-placeholder {
+  color: #6D7F83;
+}
+/* line 56, ../../../../../.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+.theme-1 .input-search::-webkit-input-placeholder {
+  color: #6D7F83;
 }
 /* line 54, ../scss/_autocomplete-theme-1.scss */
-.theme-1 ::-webkit-input-placeholder {
-  color: #6D7F83;
+.theme-1 .link-search {
+  display: none;
 }
 /* line 58, ../scss/_autocomplete-theme-1.scss */
 .theme-1 .list-results {

@@ -4,7 +4,7 @@
 
  $med-teal: #6D7F83;
  $light-teal: #99B2B7;
- $padding-top-search: 6px;
+ $padding-vt-search: 6px;
  $padding-left-search: 15px;
  $width-input-search: 92%;
 
@@ -29,8 +29,8 @@
     display: inline-block;
     float: left;
     height: 100%;
-    padding-top: $padding-top-search;
-    padding-bottom: $padding-top-search;
+    padding-top: $padding-vt-search;
+    padding-bottom: $padding-vt-search;
   }  
 
   .input-search {
