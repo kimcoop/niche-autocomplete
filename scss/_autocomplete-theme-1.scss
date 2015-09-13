@@ -15,6 +15,7 @@
 
  $border-width: 1em;
  $margin-hz-result: 1em;
+ $width-result-name: 70%;
 
 .theme-1 {
   font-family: 'Droid Serif', Georgia, Times, serif;
@@ -63,9 +64,7 @@
     width: 100%;
 
     &:not(:empty) {
-      -webkit-box-shadow: 0 10px 6px -6px #777;
-      -moz-box-shadow: 0 10px 6px -6px #777;
-      box-shadow: 0 10px 6px -6px #777;
+      @include box-shadow(0 10px 6px -6px #777);
     }
 
     li {
@@ -84,47 +83,40 @@
   }
 
   .result-name {
+    @include transition(color 0.3s);
     font-family: 'Droid Sans', Georgia, Times, serif;
     font-size: 0.9em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    -webkit-transition: color 0.3s;
-    transition: color 0.3s;
-    width: 70%;
+    width: $width-result-name;
 
     &::after {
       @include font-awesome-icon($icon-caret);
+      @include transition(opacity 0.3s, transform 0.3s);
+      @include transform(translateX(-5px) rotate(-15deg));
       opacity: 0;
-      -moz-transition: opacity 0.3s, -moz-transform 0.3s;
-      -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-      transition: opacity 0.3s, transform 0.3s;
-      -moz-transform: translateX(-5px) rotate(-15deg);
-      -webkit-transform: translateX(-5px) rotate(-15deg);
-      transform: translateX(-5px) rotate(-15deg);
     }
   }
 
   .result-location {
+    font-size: 0.8em;
+    margin-left: -0.4em; // inline-block spacing fix :'(
     text-align: right;
-    width: 29%;
+    width: 100 - $width-result-name;
   }
 
   .result-active {
     color: $light-tan;
 
     .result-name::after {
+      @include transform(translateX(0px) rotate(0));
       opacity: 1;
-      -moz-transform: translateX(0px) rotate(0);
-      -webkit-transform: translateX(0px) rotate(0);
-      transform: translateX(0px) rotate(0);
     }
   }
 
   .result-selected {
     .result-name::after {
-      -moz-transform: translateX(10px) rotate(360deg);
-      -webkit-transform: translateX(10px) rotate(360deg);
-      transform: translateX(10px) rotate(360deg);
+      @include transform(translateX(10px) rotate(360deg));
     }
   }
 
