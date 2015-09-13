@@ -46,6 +46,10 @@ require(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constan
       });
     }).on('mouseleave', 'li', function() {
       $.publish('search:exitResult');
+    }).on('click', 'li', function(e) {
+      $.publish('search:selectResult', {
+          index: $(this).index()
+        });
     });
 
     $('.input-search').on('keyup', function(e) {

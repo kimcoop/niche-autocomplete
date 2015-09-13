@@ -16,16 +16,6 @@
  $border-width: 1em;
  $margin-hz-result: 1em;
 
- %result-selected-t1 {
-  .result-name {
-    &::after {
-      -moz-transform: translateX(10px) rotate(360deg);
-      -webkit-transform: translateX(10px) rotate(360deg);
-      transform: translateX(10px) rotate(360deg);
-    }
-  }
-}
-
 .theme-1 {
   font-family: 'Droid Serif', Georgia, Times, serif;
 
@@ -90,14 +80,6 @@
       padding: 1em 0;
       margin-left: $margin-hz-result;
       margin-right: $margin-hz-result;
-
-      &:active {
-        @extend %result-selected-t1;
-      }
-    }
-
-    .result-selected a {
-      @extend %result-selected-t1;
     }
   }
 
@@ -135,6 +117,14 @@
       -moz-transform: translateX(0px) rotate(0);
       -webkit-transform: translateX(0px) rotate(0);
       transform: translateX(0px) rotate(0);
+    }
+  }
+
+  .result-selected {
+    .result-name::after {
+      -moz-transform: translateX(10px) rotate(360deg);
+      -webkit-transform: translateX(10px) rotate(360deg);
+      transform: translateX(10px) rotate(360deg);
     }
   }
 
