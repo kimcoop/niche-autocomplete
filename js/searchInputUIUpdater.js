@@ -25,7 +25,7 @@ require(['tinyPubSub', 'jquery'], function() {
     $('.input-search').val('');
   });
 
-  $.subscribe('search:jsonLoadSuccess', function(event, data) {
+  $.subscribe('search:new', function(event, data) {
     originalSearchTerm = data.searchTerm;
   });
 

@@ -1,8 +1,11 @@
 /**
  * searchActions.js
+ *
+ * Note: Can be broken out further as needed 
+ * to control module bloat
  */
 
-require(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constants, SearchService) {
+require(['constants', 'jquery', 'tinyPubSub'], function(Constants) {
   'use strict';
 
   $(function() {
@@ -48,8 +51,8 @@ require(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constan
       $.publish('search:exitResult');
     }).on('click', 'li', function(e) {
       $.publish('search:selectResult', {
-          index: $(this).index()
-        });
+        index: $(this).index()
+      });
     });
 
     $('.input-search').on('keyup', function(e) {
@@ -75,7 +78,9 @@ require(['constants', 'searchService', 'jquery', 'tinyPubSub'], function(Constan
           index: $activeResult.prev('li').length ? activeIndex - 1 : -1
         });
       } else {
-        SearchService.fetch($(this).val().trim());
+        $.publish('search:new', {
+          searchTerm: $(this).val().trim()
+        });
       }
 
       return false;

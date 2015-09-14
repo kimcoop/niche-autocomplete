@@ -1,4 +1,75 @@
 /**
+ * JSONPUtil.js
+ *
+ * Borrowed gratefully from Shoefitr.com
+ */
+
+var JSONPUtil = {
+
+  _oJsonpRequests: {},
+
+  _iJsonpRequestCount: 0,
+
+  DispatchJsonpResponse: function(oResponse, sEcho) {
+    // sEcho contains the request id
+    var callback = this._oJsonpRequests[sEcho];
+    delete this._oJsonpRequests[sEcho];
+
+    if (callback) {
+      callback(oResponse);
+    }
+  },
+
+  // Note that query string variables 'callback' and 'echo' are appended to sUrl, so your request URL
+  // must not contain either of these. Also be sure to append "?sid=" + Math.random() to the URL to avoid
+  // cache hits.
+  LoadJSONP: function(sUrl, f) {
+    // sEcho contains the request id
+    var sEcho = this._iJsonpRequestCount++;
+    this._oJsonpRequests[sEcho] = f;
+
+    var script = document.createElement('script');
+    script.setAttribute('src', sUrl +
+      '&callback=JSONPUtil.DispatchJsonpResponse' +
+      '&echo=' + sEcho
+    );
+    document.body.appendChild(script);
+  }
+};
+define("jsonp", function(){});
+
+/**
+ * constants.js
+ */
+
+define('constants',[],function() {
+ 'use strict';
+    
+  var Constants = {
+    URL_SEARCH_BASE: 'http://niche-recruiting-autocomplete.appspot.com/search/?query=',
+    ERROR_SEARCH_DEFAULT: 'We\'re sorry, but something went wrong with your search. Please try again.',
+    
+    keyCodes: {
+      ENTER: 13,
+      UP: 38,
+      DOWN: 40,
+      ESCAPE: 27
+    },
+
+    getSearchUrlForTerm: function(term) {
+      return Constants.URL_SEARCH_BASE + term;
+    },
+
+    getResultsTextForNum: function(num) {
+      var noun = num === 1 ? 'result' : 'results';
+      return num + ' ' + noun;
+    }
+  };
+
+  return Constants;
+
+});
+/**
  * tinyPubSub.js
  *
  * jQuery Tiny Pub/Sub - v0.7 - 10/27/2011
@@ -6,4 +77,376 @@
  * Copyright (c) 2011 "Cowboy" Ben Alman; Licensed MIT, GPL 
  */
 
-var JSONPUtil={_oJsonpRequests:{},_iJsonpRequestCount:0,DispatchJsonpResponse:function(e,t){var n=this._oJsonpRequests[t];delete this._oJsonpRequests[t],n&&n(e)},LoadJSONP:function(e,t){var n=this._iJsonpRequestCount++;this._oJsonpRequests[n]=t;var r=document.createElement("script");r.setAttribute("src",e+"&callback=JSONPUtil.DispatchJsonpResponse"+"&echo="+n),document.body.appendChild(r)}};define("jsonp",function(){}),define("constants",[],function(){"use strict";var e={URL_SEARCH_BASE:"http://niche-recruiting-autocomplete.appspot.com/search/?query=",ERROR_SEARCH_DEFAULT:"We're sorry, but something went wrong with your search. Please try again.",keyCodes:{ENTER:13,UP:38,DOWN:40,ESCAPE:27},getSearchUrlForTerm:function(t){return e.URL_SEARCH_BASE+t},getResultsTextForNum:function(e){var t=e===1?"result":"results";return e+" "+t}};return e}),define("tinyPubSub",["jquery"],function(){var e=$({});$.subscribe=function(){e.on.apply(e,arguments)},$.unsubscribe=function(){e.off.apply(e,arguments)},$.publish=function(){e.trigger.apply(e,arguments)}}),require(["constants","tinyPubSub","jquery"],function(e){"use strict";$.subscribe("search:exitResults",function(e,t){$(".num-results").text("")}),$.subscribe("search:jsonLoadSuccess",function(t,n){$(".num-results").text(e.getResultsTextForNum(n.total))})}),define("numResultsUIUpdater",function(){}),define("searchService",["constants","jquery"],function(e){"use strict";return{fetch:function(t){t.length||$.publish("search:exitResults");var n=e.getSearchUrlForTerm(t),r={results:[{url:"https://colleges.niche.com/abc-bartending-school/",location:"Columbus, OH",id:"0517BC02-D20D-48B9-AF9D-6772D18D7156",name:"ABC Bartending School"},{url:"https://colleges.niche.com/abc-beauty-academy/",location:"Garland, TX",id:"04BF4548-D323-48F6-B13E-0D6B01DFC25E",name:"ABC Beauty Academy"},{url:"https://colleges.niche.com/abc-beauty-college/",location:"Arkadelphia, AR",id:"CED51B71-284F-433A-8BCB-5D467F207B42",name:"ABC Beauty College"},{url:"https://colleges.niche.com/abcott-institute/",location:"Southfield, MI",id:"BDF76ECA-954E-43F3-828F-30B4CA3B0C06",name:"Abcott Institute"},{url:"https://colleges.niche.com/abdill-career-college-inc/",location:"Medford, OR",id:"47D65C02-A3F1-486C-9ECB-D52E83488025",name:"Abdill Career College"},{url:"https://colleges.niche.com/abi-school-of-barbering--and--cosmetology----chelsea/",location:"New York City, NY",id:"56AA0050-627B-44C1-9E71-03761E8C3868",name:"ABI School of Barbering & Cosmetology - Chelsea"},{url:"https://colleges.niche.com/abi-school-of-barbering--and--cosmetology----tribeca/",location:"New York City, NY",id:"A6A1AEDE-4393-48FE-A34B-B313B826D042",name:"ABI School of Barbering & Cosmetology - Tribeca"},{url:"https://colleges.niche.com/abilene-christian-university/",location:"Abilene, TX",id:"6F3EEB2F-6FFF-4C07-A308-6F33984AF00E",name:"Abilene Christian University"},{url:"https://colleges.niche.com/abington-memorial-hospital-dixon-school-of-nursing/",location:"Willow Grove, PA",id:"89033D95-DA64-4033-9E8E-9A28F2FED9DF",name:"Abington Memorial Hospital Dixon School of Nursing"},{url:"https://colleges.niche.com/abraham-baldwin-agricultural-college/",location:"Tifton, GA",id:"822F0DBD-8A78-4518-A306-74109E09C971",name:"Abraham Baldwin Agricultural College"},{url:"https://colleges.niche.com/abraham-lincoln-university/",location:"Los Angeles, CA",id:"10E8AAD0-6714-4C4A-B87C-169767519061",name:"Abraham Lincoln University"},{url:"https://colleges.niche.com/abram-friedman-occupational-center/",location:"Los Angeles, CA",id:"A072BA60-5BD7-4DFD-AB24-119ADCB81BA7",name:"Abram Friedman Occupational Center"},{url:"https://colleges.niche.com/belmont-abbey-college/",location:"Belmont, NC",id:"5E7175E2-0EB4-47D4-97B0-DD60AE83E079",name:"Belmont Abbey College"},{url:"https://colleges.niche.com/henry-abbott-technical-high-school/",location:"Danbury, CT",id:"5A75AE8A-D80D-4B37-837B-F7C7EBBFF856",name:"Henry Abbott Technical High School"},{url:"https://colleges.niche.com/penn-state-abington/",location:"Abington Township, PA",id:"6D15D5CB-5C9B-4109-8C27-7FC4FC288DF9",name:"Penn State Abington"},{url:"https://colleges.niche.com/texas-college-of-cosmetology----abilene/",location:"Abilene, TX",id:"363948CB-0002-4766-9402-21685EEA85EF",name:"Texas College of Cosmetology - Abilene"},{url:"https://colleges.niche.com/university-of-aberdeen/",location:"null",id:"7595A752-ECB1-4F57-8C6C-E7A47F09FF89",name:"University of Aberdeen"},{url:"https://colleges.niche.com/vancouver-career-college-abbotsford/",location:"null",id:"F99D6BF1-03C2-4FBF-9686-CC49B110215E",name:"Vancouver Career College - Abbotsford"}],total:18};r={results:[{url:"https://colleges.niche.com/devry-college-of-new-yorks-keller-graduate-school-of-management/",location:"New York City, NY",id:"C18290DC-22D5-44C7-B77F-E5A5A27351A3",name:"DeVry College of New York's Keller Graduate School of Management"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----arizona/",location:"Phoenix, AZ",id:"FDA281D7-1274-490F-ABB2-181668210285",name:"DeVry University's Keller Graduate School of Management - Arizona"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----california/",location:"Pomona, CA",id:"7E0A8242-CCFB-472F-B79F-85DDCC87B8CB",name:"DeVry University's Keller Graduate School of Management - California"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----colorado/",location:"Westminster, CO",id:"BE56B7BF-41EF-428D-932B-595810B75E5F",name:"DeVry University's Keller Graduate School of Management - Colorado"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----florida/",location:"Miramar, FL",id:"08D75AC9-79D5-48D2-BEC1-82C445211B2A",name:"DeVry University's Keller Graduate School of Management - Florida"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----georgia/",location:"Decatur, GA",id:"BECD16D6-196C-4492-B43E-11404E153514",name:"DeVry University's Keller Graduate School of Management - Georgia"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----illinois/",location:"Downers Grove, IL",id:"37E6BEC3-9593-422B-8F82-2073A174D1CC",name:"DeVry University's Keller Graduate School of Management - Illinois"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----indiana/",location:"Indianapolis, IN",id:"0E931F65-9F5A-4D89-B248-EBC0A10ECD55",name:"DeVry University's Keller Graduate School of Management - Indiana"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----kentucky/",location:"Louisville, KY",id:"81E553D0-7065-497F-BB0C-78FB0A580D0A",name:"DeVry University's Keller Graduate School of Management - Kentucky"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----maryland/",location:"Bethesda, MD",id:"5237BBC2-E789-4F14-A3E8-8B3725AA0320",name:"DeVry University's Keller Graduate School of Management - Maryland"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----michigan/",location:"Southfield, MI",id:"EF6F8240-1FAC-4052-97B9-75D26212BF7F",name:"DeVry University's Keller Graduate School of Management - Michigan"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----minnesota/",location:"Edina, MN",id:"A544B273-3164-4406-A3A9-92880E7880FB",name:"DeVry University's Keller Graduate School of Management - Minnesota"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----missouri/",location:"Kansas City, MO",id:"B4F6EAA5-4FF4-4BA1-9AB2-366B159B93FB",name:"DeVry University's Keller Graduate School of Management - Missouri"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----nevada/",location:"Henderson, NV",id:"B665EE9D-71ED-45CB-89C0-88EAE0B29587",name:"DeVry University's Keller Graduate School of Management - Nevada"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----new-jersey/",location:"North Brunswick Township, NJ",id:"11DCF6B1-5BD7-45E6-BB95-135F80D8D085",name:"DeVry University's Keller Graduate School of Management - New Jersey"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----north-carolina/",location:"Charlotte, NC",id:"996E6F45-B478-4EA7-B13D-6EB8E4E8F79E",name:"DeVry University's Keller Graduate School of Management - North Carolina"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----ohio/",location:"Columbus, OH",id:"328F3153-5670-4C22-ABEE-C60EE8B022B3",name:"DeVry University's Keller Graduate School of Management - Ohio"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----oklahoma/",location:"Oklahoma City, OK",id:"87F0352F-358D-49FE-AE7B-51D006981DD6",name:"DeVry University's Keller Graduate School of Management - Oklahoma"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----oregon/",location:"Portland, OR",id:"2D24A820-A2F7-4D2F-AFDE-9F7F02F99E20",name:"DeVry University's Keller Graduate School of Management - Oregon"},{url:"https://colleges.niche.com/devry-universitys-keller-graduate-school-of-management----pennsylvania/",location:"Fort Washington, PA",id:"B832071E-071E-4683-909F-8B84C49609F3",name:"DeVry University's Keller Graduate School of Management - Pennsylvania"}],total:26};if(!r){$.publish("search:jsonLoadError",{message:e.ERROR_SEARCH_DEFAULT});return}r.searchTerm=t,$.publish("search:jsonLoadSuccess",r)}}}),require(["constants","searchService","jquery","tinyPubSub"],function(e,t){"use strict";$(function(){$(".input-search").val(""),$(".form-search").submit(function(e){e.preventDefault()}),$(document).on("click",function(e){$(e.target).parents(".form-search").length||$.publish("search:exitResults")}),$(".link-search").click(function(e){e.preventDefault();var t=$(".list-results .result-active");t.length&&$.publish("search:selectResult",{index:t.index()})}),$(".input-search").keydown(function(t){if(t.keyCode===e.keyCodes.UP)return!1}),$(".list-results").on("mouseenter","li",function(){$.publish("search:activateResult",{index:$(this).index()})}).on("mouseleave","li",function(){$.publish("search:exitResult")}).on("click","li",function(e){$.publish("search:selectResult",{index:$(this).index()})}),$(".input-search").on("keyup",function(n){if(n.keyCode===e.keyCodes.ESCAPE)return $.publish("search:exitResults"),!1;var r=$(".list-results .result-active"),i=r.index();return n.keyCode===e.keyCodes.ENTER&&r.length?$.publish("search:selectResult",{index:i}):n.keyCode===e.keyCodes.DOWN?$.publish("search:activateResult",{index:r.next("li").length?i+1:0}):n.keyCode===e.keyCodes.UP?$.publish("search:activateResult",{index:r.prev("li").length?i-1:-1}):t.fetch($(this).val().trim()),!1})})}),define("searchActions",function(){}),require(["tinyPubSub","jquery"],function(){"use strict";var e="",t=function(e){var t=e.index||0,n=$(".list-results li").eq(t).data("name");$(".input-search").val(n)};$.subscribe("search:selectResult",function(e,n){t(n)}),$.subscribe("search:activateResult",function(e,n){t(n)}),$.subscribe("search:exitResults",function(e,t){$(".input-search").val("")}),$.subscribe("search:jsonLoadSuccess",function(t,n){e=n.searchTerm}),$.subscribe("search:exitResult",function(t,n){$(".input-search").val(e)})}),define("searchInputUIUpdater",function(){}),function(){var e={};this.tmpl=function t(n,r){var i=/\W/.test(n)?new Function("obj","var p=[],print=function(){p.push.apply(p,arguments);};with(obj){p.push('"+n.replace(/[\r\t\n]/g," ").split("<%").join("	").replace(/((^|%>)[^\t]*)'/g,"$1\r").replace(/\t=(.*?)%>/g,"',$1,'").split("	").join("');").split("%>").join("p.push('").split("\r").join("\\'")+"');}return p.join('');"):e[n]=e[n]||t(document.getElementById(n).innerHTML);return r?i(r):i}}(),define("microtemplate",function(){}),require(["jquery","microtemplate","tinyPubSub"],function(){"use strict";$.subscribe("theme:activate",function(e,t){var n="theme-"+t.theme||"theme-0";$(".container-autocomplete").removeClass("theme-0 theme-1").addClass(n)}),$.subscribe("search:jsonLoadError",function(e,t){$(".error-search").text(t.message).removeClass("hidden")}),$.subscribe("search:jsonLoadSuccess",function(e,t){$(".error-search").addClass("hidden");var n="";$.each(t.results,function(e,t){n+=tmpl("tmpl_searchResult",t)}),$(".list-results").html(n),t.total===1&&$(".list-results li").first().addClass("result-active")}),$.subscribe("search:exitResults",function(e,t){$(".list-results").empty()}),$.subscribe("search:exitResult",function(e,t){$(".list-results .result-active").removeClass("result-active")}),$.subscribe("search:activateResult",function(e,t){$(".list-results .result-active").removeClass("result-active");var n=t.index||0;$(".list-results li").eq(n).addClass("result-active")}),$.subscribe("search:selectResult",function(e,t){var n=t.index||0;$(".list-results li").eq(n).addClass("result-selected").children("a")[0].click()})}),define("searchResultsUIUpdater",function(){}),require(["jquery","tinyPubSub"],function(){"use strict";$(function(){$(".container-themes").delegate("li","click",function(e){e.preventDefault();var t=$(this).data("theme");$.publish("theme:activate",{theme:t})})})}),define("themeActions",function(){}),require(["jquery","tinyPubSub"],function(){"use strict";$.subscribe("theme:activate",function(e,t){var n=t.theme||0;$(".container-themes .theme-active").removeClass("theme-active"),$(".container-themes li").eq(n).addClass("theme-active")})}),define("themeMenuUIUpdater",function(){}),require.config({paths:{jquery:"https://code.jquery.com/jquery-2.1.4.min",microtemplate:"libs/microtemplate",tinyPubSub:"libs/tinyPubSub",constants:"utils/constants",jsonp:"utils/JSONPUtil"}}),require(["jsonp","numResultsUIUpdater","searchActions","searchInputUIUpdater","searchResultsUIUpdater","searchService","themeActions","themeMenuUIUpdater"]),define("app",function(){});
+define('tinyPubSub',['jquery'], function() {
+
+  var o = $({});
+
+  $.subscribe = function() {
+    o.on.apply(o, arguments);
+  };
+
+  $.unsubscribe = function() {
+    o.off.apply(o, arguments);
+  };
+
+  $.publish = function() {
+    o.trigger.apply(o, arguments);
+  };
+
+});
+/**
+ * numResultsUIUpdater.js
+ */
+
+require(['constants', 'tinyPubSub', 'jquery'], function(Constants) {
+  'use strict';
+
+  $.subscribe('search:exitResults', function(event, data) {
+    $('.num-results').text('');
+  });
+
+  $.subscribe('search:jsonLoadSuccess', function(event, data) {
+    $('.num-results').text(Constants.getResultsTextForNum(data.total));
+  });
+
+});
+define("numResultsUIUpdater", function(){});
+
+/**
+ * searchActions.js
+ *
+ * Note: Can be broken out further as needed 
+ * to control module bloat
+ */
+
+require(['constants', 'jquery', 'tinyPubSub'], function(Constants) {
+  'use strict';
+
+  $(function() {
+
+    $('.input-search').val(''); // Ensure input is clear on start
+
+    $('.form-search').submit(function(e) {
+      e.preventDefault(); // Enter keypress should not submit form
+    });
+
+    $(document).on('click', function(e) {
+      // Blur doesn't quite cut it since click event (on .result, for ex)
+      // fires after blur, so clicking .result will :exitResults first
+      if (!$(e.target).parents('.form-search').length) {
+        $.publish('search:exitResults');
+      }
+    });
+
+    $('.link-search').click(function(e) {
+      e.preventDefault();
+      var $activeResult = $('.list-results .result-active');
+
+      // If search icon is clicked *and* there's an active result,
+      // navigate to it. Otherwise, no-op
+      if ($activeResult.length) {
+        $.publish('search:selectResult', {
+          index: $activeResult.index()
+        });
+      }
+    });
+
+    $('.input-search').keydown(function(e) {
+      if (e.keyCode === Constants.keyCodes.UP) { // Prevent wandering cursor
+        return false;
+      }
+    });
+
+    $('.list-results').on('mouseenter', 'li', function() {
+      $.publish('search:activateResult', {
+        index: $(this).index()
+      });
+    }).on('mouseleave', 'li', function() {
+      $.publish('search:exitResult');
+    }).on('click', 'li', function(e) {
+      $.publish('search:selectResult', {
+        index: $(this).index()
+      });
+    });
+
+    $('.input-search').on('keyup', function(e) {
+
+      if (e.keyCode === Constants.keyCodes.ESCAPE) {
+        $.publish('search:exitResults');
+        return false;
+      }
+
+      var $activeResult = $('.list-results .result-active'),
+        activeIndex = $activeResult.index();
+
+      if (e.keyCode === Constants.keyCodes.ENTER && $activeResult.length) {
+        $.publish('search:selectResult', {
+          index: activeIndex
+        });
+      } else if (e.keyCode === Constants.keyCodes.DOWN) {
+        $.publish('search:activateResult', {
+          index: $activeResult.next('li').length ? activeIndex + 1 : 0
+        });
+      } else if (e.keyCode === Constants.keyCodes.UP) {
+        $.publish('search:activateResult', {
+          index: $activeResult.prev('li').length ? activeIndex - 1 : -1
+        });
+      } else {
+        $.publish('search:new', {
+          searchTerm: $(this).val().trim()
+        });
+      }
+
+      return false;
+    });
+
+  });
+});
+define("searchActions", function(){});
+
+/**
+ * searchInputUIUpdater.js
+ */
+
+require(['tinyPubSub', 'jquery'], function() {
+  'use strict';
+
+  var originalSearchTerm = ''; // Store this to recall on result mouseout
+
+  var populateInput = function(data) {
+    var index = data.index || 0;
+    var selectionName = $('.list-results li').eq(index).data('name');
+    $('.input-search').val(selectionName);
+  };
+
+  $.subscribe('search:selectResult', function(event, data) {
+    populateInput(data);
+  });
+
+  $.subscribe('search:activateResult', function(event, data) {
+    populateInput(data);
+  });
+
+  $.subscribe('search:exitResults', function(event, data) {
+    $('.input-search').val('');
+  });
+
+  $.subscribe('search:new', function(event, data) {
+    originalSearchTerm = data.searchTerm;
+  });
+
+  $.subscribe('search:exitResult', function(event, data) {
+    $('.input-search').val(originalSearchTerm);
+  });
+
+});
+define("searchInputUIUpdater", function(){});
+
+/**
+ * microtemplate.js
+ * 
+ * Simple JavaScript Templating
+ * John Resig - http://ejohn.org/ - MIT Licensed
+ */
+
+(function() {
+  var cache = {};
+ 
+  this.tmpl = function tmpl(str, data){
+    // Figure out if we're getting a template, or if we need to
+    // load the template - and be sure to cache the result.
+    var fn = !/\W/.test(str) ?
+      cache[str] = cache[str] ||
+        tmpl(document.getElementById(str).innerHTML) :
+     
+      // Generate a reusable function that will serve as a template
+      // generator (and which will be cached).
+      new Function("obj",
+        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+       
+        // Introduce the data as local variables using with(){}
+        "with(obj){p.push('" +
+       
+        // Convert the template into pure JavaScript
+        str
+          .replace(/[\r\t\n]/g, " ")
+          .split("<%").join("\t")
+          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+          .replace(/\t=(.*?)%>/g, "',$1,'")
+          .split("\t").join("');")
+          .split("%>").join("p.push('")
+          .split("\r").join("\\'")
+      + "');}return p.join('');");
+   
+    // Provide some basic currying to the user
+    return data ? fn( data ) : fn;
+  };
+})();
+define("microtemplate", function(){});
+
+/**
+ * searchResultsUIUpdater.js
+ */
+
+require(['jquery', 'microtemplate', 'tinyPubSub'], function() {
+  'use strict';
+
+  $.subscribe('theme:activate', function(event, data) {
+    var themeClass = ('theme-' + data.theme) || 'theme-0';
+
+    $('.container-autocomplete')
+      .removeClass('theme-0 theme-1')
+      .addClass(themeClass);
+  });
+
+  $.subscribe('search:jsonLoadError', function(event, data) {
+    $('.error-search').text(data.message)
+      .removeClass('hidden');
+  });
+
+  $.subscribe('search:jsonLoadSuccess', function(event, data) {
+    $('.error-search').addClass('hidden'); // Ensure error display is hidden
+
+    var markup = '';
+
+    $.each(data.results, function(i, result) {
+      markup += tmpl('tmpl_searchResult', result);
+    });
+
+    $('.list-results').html(markup);
+
+    if (data.total === 1) {
+      $('.list-results li').first().addClass('result-active'); // If only one result, activate it
+    }
+  });
+
+  $.subscribe('search:exitResults', function(event, data) {
+    $('.list-results').empty();
+  });
+
+  $.subscribe('search:exitResult', function(event, data) {
+    $('.list-results .result-active').removeClass('result-active');
+  });
+
+  $.subscribe('search:activateResult', function(event, data) {
+    $('.list-results .result-active').removeClass('result-active'); // For good measure
+
+    var index = data.index || 0;
+    $('.list-results li').eq(index).addClass('result-active');
+  });
+
+  $.subscribe('search:selectResult', function(event, data) {
+    var index = data.index || 0;
+    $('.list-results li').eq(index)
+      .addClass('result-selected')
+      .children('a')[0].click();
+  });
+
+});
+define("searchResultsUIUpdater", function(){});
+
+/**
+ * searchService.js
+ */
+
+require(['constants', 'jquery', 'tinyPubSub'], function(Constants) {
+  'use strict';
+
+  var search = function(searchTerm) {
+    // If blank search, render no results
+    if (!searchTerm.length) {
+      $.publish('search:exitResults');
+    }
+
+    var searchUrl = Constants.getSearchUrlForTerm(searchTerm);
+
+    JSONPUtil.LoadJSONP(searchUrl, function(response) {
+      // If we don't get a response, something went wrong,
+      // so just let the user know there's an error
+      if (!response) {
+        $.publish('search:jsonLoadError', {
+          message: Constants.ERROR_SEARCH_DEFAULT
+        });
+        return;
+      }
+
+      $.publish('search:jsonLoadSuccess', response);
+    });
+  };
+
+  $.subscribe('search:new', function(event, data) {
+    search(data.searchTerm);
+  });
+
+});
+define("searchService", function(){});
+
+/**
+ * themeActions.js
+ */
+
+require(['jquery', 'tinyPubSub'], function() {
+  'use strict';
+
+  $(function() {
+    $('.container-themes').delegate('li', 'click', function(e) {
+      e.preventDefault();
+      var theme = $(this).data('theme');
+      $.publish('theme:activate', {
+        theme: theme
+      });
+    });
+  });
+
+});
+define("themeActions", function(){});
+
+/**
+ * themeMenuUIUpdater.js
+ */
+
+require(['jquery', 'tinyPubSub'], function() {
+  'use strict';
+
+  $.subscribe('theme:activate', function(event, data) {
+    var themeIndex = data.theme || 0;
+    $('.container-themes .theme-active').removeClass('theme-active');
+    $('.container-themes li').eq(themeIndex).addClass('theme-active');
+  });
+
+});
+define("themeMenuUIUpdater", function(){});
+
+/**
+ * app.js
+ *
+ * Main entry point for requireJS. 
+ * Configure paths for common libs/utils,
+ * to allow shorthand dependency references
+ * (eg 'tinyPubSub' instead of 'libs/tinyPubSub')
+ *
+ * Third party dependencies (jQuery) go in libs/
+ */
+require.config({
+  paths: {
+    jquery: 'https://code.jquery.com/jquery-2.1.4.min',
+    microtemplate: 'libs/microtemplate',
+    tinyPubSub: 'libs/tinyPubSub',
+    constants: 'utils/constants',
+    jsonp: 'utils/JSONPUtil'
+  }
+});
+
+// Modules to load go here
+require([
+  'jsonp',
+  'numResultsUIUpdater',
+  'searchActions',
+  'searchInputUIUpdater',
+  'searchResultsUIUpdater',
+  'searchService',
+  'themeActions',
+  'themeMenuUIUpdater'
+]);
+define("app", function(){});
+
