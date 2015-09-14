@@ -10,23 +10,22 @@
  */
 require.config({
   paths: {
-    'jquery': 'https://code.jquery.com/jquery-2.1.4.min',
-    'microtemplate': 'libs/microtemplate',
-    'tinyPubSub': 'libs/tinyPubSub',
-    'constants': 'utils/constants',
-    'jsonp': 'utils/JSONPUtil'
+    jquery: 'https://code.jquery.com/jquery-2.1.4.min',
+    microtemplate: 'libs/microtemplate',
+    tinyPubSub: 'libs/tinyPubSub',
+    constants: 'utils/constants',
+    jsonp: 'utils/JSONPUtil'
   }
 });
 
-
 // Modules to load go here
 require([
-  'jsonp', 
+  'jsonp',
   'numResultsUIUpdater',
-  'searchActions', 
+  'searchActions',
   'searchInputUIUpdater',
   'searchResultsUIUpdater',
   'searchService',
   'themeActions',
   'themeMenuUIUpdater'
-], function() {});
+]);

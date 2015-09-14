@@ -15,16 +15,23 @@ module.exports = function(grunt) {
       options: {
         // options here to override JSHint defaults
         globals: {
-          jQuery: true,
-          console: true,
-          module: true,
-          document: true
+          jQuery: true
+        }
+      }
+    },
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: 'js',
+          mainConfigFile: 'js/app.js',
+          name: 'app',
+          out: 'public/scripts.js'
         }
       }
     },
     watch: {
       files: ['<%= jshint.files %>', 'scss/{**,*}.scss'],
-      tasks: ['jshint', 'compass'],
+      tasks: ['jshint', 'compass', 'requirejs'],
       options: {
         livereload: true
       }
@@ -34,6 +41,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   grunt.registerTask('default', ['watch']);
 
