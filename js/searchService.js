@@ -9,6 +9,7 @@ require(['constants', 'jquery', 'tinyPubSub'], function(Constants) {
     // If blank search, render no results
     if (!searchTerm.length) {
       $.publish('search:exitResults');
+      return;
     }
 
     var searchUrl = Constants.getSearchUrlForTerm(searchTerm);

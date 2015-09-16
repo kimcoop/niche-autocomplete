@@ -21,11 +21,9 @@ require(['jquery', 'microtemplate', 'tinyPubSub'], function() {
   $.subscribe('search:jsonLoadSuccess', function(event, data) {
     $('.error-search').addClass('hidden'); // Ensure error display is hidden
 
-    var markup = '';
-
-    $.each(data.results, function(i, result) {
-      markup += tmpl('tmpl_searchResult', result);
-    });
+    var markup = data.results.map(function(result) {
+      return tmpl('tmpl_searchResult', result);
+    }).join('');
 
     $('.list-results').html(markup);
 

@@ -14,13 +14,15 @@ require.config({
     microtemplate: 'libs/microtemplate',
     tinyPubSub: 'libs/tinyPubSub',
     constants: 'utils/constants',
-    jsonp: 'utils/JSONPUtil'
+    jsonp: 'utils/JSONPUtil',
+    watchdog: 'utils/watchdog',
   }
 });
 
 // Modules to load go here
 require([
   'jsonp',
+  'watchdog',
   'numResultsUIUpdater',
   'searchActions',
   'searchInputUIUpdater',
